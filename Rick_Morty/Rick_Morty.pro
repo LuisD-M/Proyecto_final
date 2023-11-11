@@ -10,12 +10,14 @@ CONFIG += c++17
 
 SOURCES += \
     balas.cpp \
+    enemy1.cpp \
     heroe.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     balas.h \
+    enemy1.h \
     heroe.h \
     mainwindow.h
 

@@ -17,13 +17,25 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     personaje = new heroe();                                 // crea heroe
     scene1->addItem(personaje);                               //Añade a la escena
-    personaje->setPos(20,20 );
+    personaje->setPos(scene1->width()/2,scene1->height()/2);
 
+    timer = new QTimer();
+    connect(timer, &QTimer::timeout, this, [this]{
+        bulletMove();
+        enemyBulletGeneration();
+        colission();
+        setFocus();
+    });                                                         //Conecta el temporizador para mover balas
 
-    timer = new QTimer(this);
-    connect(timer, SIGNAL(timeout()), this, SLOT(bulletMove()));     //Conecta el temporizador para mover balas
-    timer->start(16);                                                // 16
+    timer->start(16);                                                             // 16
 
+    //timer1 = new QTimer(this);
+    //connect(timer1, SIGNAL(timeout()), this, SLOT(enemyBulletGeneration()));
+    //timer1->start(16);
+
+    enemyTimer = new QTimer(this);
+    connect(enemyTimer, SIGNAL(timeout()), this, SLOT(enemyGeneration()));
+    enemyTimer->start(2000);
 
 }
 
@@ -115,19 +127,112 @@ void MainWindow::bulletMove()
         }
     }
 
-  /*  for (auto it = enemyBullets.begin(); it != enemyBullets.end();)
+    for (auto it = enemyBullets.begin(); it != enemyBullets.end();)
     {
-        Bullet *bullet = *it;
-        bullet->move();
-        if (bullet->getX() > scene1->width() || bullet->getX() < 0 - bullet->getWidth() || bullet->getY() > scene1->height() || bullet->getY() < 0-bullet->getHeight())
+        balas *bala = *it;
+        bala->move();
+        if (bala->getX() > scene1->width() || bala->getX() < 0 - bala->getWidth() || bala->getY() > scene1->height() || bala->getY() < 0-bala->getHeight())
         {
-            scene1->removeItem(bullet->getElip());
+            scene1->removeItem(bala->getElip());
             it = enemyBullets.erase(it);
-            delete bullet;
+            delete bala;
         }else
         {
             it++;
         }
-    }  */
+    }
 
 }
+
+void MainWindow::enemyGeneration()
+{
+    int place = rand() % 4 + 1;
+    int posy, posx;
+    switch (place) {
+
+    case 1: // arriba
+    {
+        posy = 60;
+        posx = rand() % ((int)scene1->width()- 10 +1 ) + 10;
+        break;
+    }
+    case 2: // abajo
+    {
+        posy = 533;
+        posx = rand() % ((int)scene1->width()- 10 +1 ) + 10;
+        break;
+    }
+    case 3: // izquierda
+    {
+        posy = rand() % ((int)scene1->height() - 89) + 50;
+        posx = 20;
+
+        break;
+    }
+    case 4: // derecha
+    {
+        posy = rand() % ((int)scene1->height() - 89) + 50;
+        posx = 1050;
+        break;
+    }
+    default:
+    {
+        posx = scene1->width()/2;
+        posy = scene1->height()/2;
+        qDebug() << "Numero aleatorio generado no es el esperado";
+    }
+    break;
+    }
+    villano = new enemy1();
+    scene1->addItem(villano);
+    villano->setPos(posx,posy);
+    enemies.push_front(villano);
+}
+
+void MainWindow::enemyBulletGeneration()
+{
+    for (auto villano: enemies)
+    {
+        int probability = rand()%150;
+        if (probability == 10)
+        {
+            balas *bala = new balas(personaje->getPos(), villano->getPos());
+            bala->balasAmarillas();
+            scene1->addItem(bala->getElip());
+
+            enemyBullets.push_front(bala);
+        }
+    }
+}
+
+void MainWindow::colission()
+{
+    for (auto itEnemy = enemies.begin(); itEnemy != enemies.end();)
+    {
+        bool erased = false;
+        for (auto itBullet = allyBullets.begin(); itBullet != allyBullets.end();)
+        {
+            if((*itEnemy)->collidesWithItem((*itBullet)->getElip()))
+            {
+                erased = true;
+
+                scene1->removeItem((*itBullet)->getElip());
+                scene1->removeItem((*itEnemy));
+
+                balas *bala = (*itBullet);
+                enemy1 *enemigo = (*itEnemy);
+
+                itEnemy = enemies.erase(itEnemy);
+                itBullet = allyBullets.erase(itBullet);
+
+                delete (enemigo);
+                delete (bala);
+                break;
+            }else
+                itBullet++;
+
+        }
+        if (!erased) itEnemy++;
+    }
+}
+

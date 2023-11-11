@@ -24,6 +24,7 @@
 
 #include <heroe.h>
 #include <balas.h>
+#include <enemy1.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -46,8 +47,13 @@ private:
     QSet<int> keysPressed;
     float x,y,ancho,alto;
     QTimer *timer;
+    QTimer *timer1;
+    QTimer *enemyTimer;
     heroe *personaje;
+    enemy1 *villano;
     std::list<balas*> allyBullets;
+    std::list<balas*>enemyBullets;
+    std::list<enemy1*> enemies;
 
     void keyPressEvent(QKeyEvent* event);
     void keyReleaseEvent(QKeyEvent* event);
@@ -55,7 +61,9 @@ private:
 
 private slots:
     void bulletMove();
-
+    void enemyGeneration();
+    void enemyBulletGeneration();
+    void colission();
 
 };
 #endif // MAINWINDOW_H

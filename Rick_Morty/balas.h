@@ -40,7 +40,7 @@ public:
     int getHeight() const;
 
     void balasAzules();                          //Pintar fondo de las balas heroe
-
+    void balasAmarillas();
 
 
 

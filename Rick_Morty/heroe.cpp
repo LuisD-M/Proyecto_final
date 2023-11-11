@@ -3,10 +3,7 @@
 
 heroe::heroe(QObject *parent) : QObject{parent}
 {
-    timer1 = new QTimer();                                           // inicializar puntero de Qtimer
     pixmap1 = new QPixmap(":/Imagenes/Rick.png");                     // inicializar puntero de QPixmap
-
-    columnas = 0;
 
     ancho = 159;                                                    //dimensiones imagen
     alto = 315;
@@ -26,8 +23,8 @@ QRectF heroe::boundingRect() const
 
 void heroe::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-    painter->drawPixmap(-ancho/2, -alto/2,*pixmap1,columnas,0,ancho,alto);
-    setScale(0.25);
+    painter->drawPixmap(-ancho/2, -alto/2,*pixmap1,0,0,ancho,alto);
+    setScale(0.20);
 }
 
 void heroe::moveBy(int x, int y)

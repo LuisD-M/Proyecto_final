@@ -1,11 +1,7 @@
 #include "balas.h"
 #include <cmath>
 
-
-balas::balas()
-{
-
-}
+balas::balas(){}
 
 balas::balas(int velx, int vely, QGraphicsEllipseItem *elip)
 {
@@ -125,6 +121,12 @@ void balas::balasAzules()
 {
     QBrush blueBrush(Qt::cyan);
     elip->setBrush(blueBrush);
+}
+
+void balas::balasAmarillas()
+{
+    QBrush yellowBrush(Qt::yellow);
+    elip->setBrush(yellowBrush);
 }
 
 
