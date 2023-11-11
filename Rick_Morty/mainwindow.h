@@ -21,7 +21,9 @@
 #include <QKeyEvent>
 #include <QSet>
 #include <QGraphicsEllipseItem>
+
 #include <heroe.h>
+#include <balas.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -45,9 +47,14 @@ private:
     float x,y,ancho,alto;
     QTimer *timer;
     heroe *personaje;
+    std::list<balas*> allyBullets;
 
     void keyPressEvent(QKeyEvent* event);
+    void keyReleaseEvent(QKeyEvent* event);
+    void mousePressEvent(QMouseEvent *event);
 
+private slots:
+    void bulletMove();
 
 
 };

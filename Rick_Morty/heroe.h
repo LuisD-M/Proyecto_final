@@ -14,10 +14,9 @@ class heroe : public QObject, public QGraphicsItem
 {
     Q_OBJECT
 
-    int posx = 20, posy = 20;                                      // posición del heroe en la escena.
+private:
+    int posx=0, posy=0;                                      // posición del heroe en la escena.
     int velocidad=10;
-
-
 
 public:
     explicit heroe(QObject *parent = nullptr);
@@ -36,9 +35,9 @@ public:
     int getPosy() const;
     void setPosy(int py);
 
-    void Actualizacion();                            // actualización periódica del sprite
-    void moveBy(int x, int y);
+    QPointF getPos() const;
 
+    void moveBy(int x, int y);
 };
 
 #endif // HEROE_H
