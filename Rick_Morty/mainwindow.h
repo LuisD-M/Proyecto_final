@@ -10,7 +10,7 @@
 #include <QTimer>
 #include <QPixmap>
 #include <QRect>
-#include <QDesktopWidget>
+//#include <QDesktopWidget>
 #include <QDebug>
 #include <QResizeEvent>
 #include <QGraphicsView>
