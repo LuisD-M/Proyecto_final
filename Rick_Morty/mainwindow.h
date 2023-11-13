@@ -60,7 +60,7 @@ private:
     vida *vidas;
 
     std::list<balas*> allyBullets;
-    std::list<balas*>enemyBullets;
+    std::list<balas*> enemyBullets;
     std::list<enemy1*> enemies;
 
     short escena;
