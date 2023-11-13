@@ -16,6 +16,8 @@ public:
     void increaseN1();
     int getpuntaje();
 
+    void setPuntuacion(int newPuntuacion);
+
 private:
     int puntuacion;
 };

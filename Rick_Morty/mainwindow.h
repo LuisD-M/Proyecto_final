@@ -10,7 +10,7 @@
 #include <QTimer>
 #include <QPixmap>
 #include <QRect>
-#include <QDesktopWidget>
+//#include <QDesktopWidget>
 #include <QDebug>
 #include <QResizeEvent>
 #include <QGraphicsView>
@@ -47,6 +47,8 @@ public:
 private:
     Ui::MainWindow *ui;
     QGraphicsScene *scene1;
+    QGraphicsScene *scene2;
+    QGraphicsScene *scene3;
     QSet<int> keysPressed;
     float x,y,ancho,alto;
     QTimer *timer;
@@ -58,19 +60,25 @@ private:
     vida *vidas;
 
     std::list<balas*> allyBullets;
-    std::list<balas*>enemyBullets;
+    std::list<balas*> enemyBullets;
     std::list<enemy1*> enemies;
 
+    short escena;
+
+    void eliminaItems(QGraphicsScene *scene);
+    void perdiste(QGraphicsScene *scene);
 
     void keyPressEvent(QKeyEvent* event);
     void keyReleaseEvent(QKeyEvent* event);
     void mousePressEvent(QMouseEvent *event);
+
 
 private slots:
     void bulletMove();
     void enemyGeneration();
     void enemyBulletGeneration();
     void colission();
+    void cambioEscena();
 
 };
 #endif // MAINWINDOW_H

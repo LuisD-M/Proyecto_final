@@ -19,3 +19,8 @@ int vida::getVidaN1()
 {
     return punVIDA;
 }
+
+void vida::setVidaN1(int newPunVIDA)
+{
+    punVIDA = newPunVIDA;
+}

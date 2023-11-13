@@ -18,3 +18,8 @@ int puntaje::getpuntaje(){
     return puntuacion;
 }
 
+void puntaje::setPuntuacion(int newPuntuacion)
+{
+    puntuacion = newPuntuacion;
+}
+

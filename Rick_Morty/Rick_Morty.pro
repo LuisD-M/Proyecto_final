@@ -14,6 +14,7 @@ SOURCES += \
     heroe.cpp \
     main.cpp \
     mainwindow.cpp \
+    obstaculo.cpp \
     puntaje.cpp \
     vida.cpp
 
@@ -22,6 +23,7 @@ HEADERS += \
     enemy1.h \
     heroe.h \
     mainwindow.h \
+    obstaculo.h \
     puntaje.h \
     vida.h
 
