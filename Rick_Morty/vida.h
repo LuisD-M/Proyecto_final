@@ -16,6 +16,8 @@ public:
     void lessVidaN1();
     int getVidaN1();
 
+    void setVidaN1(int newPunVIDA);
+
 private:
     int punVIDA;
 
