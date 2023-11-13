@@ -61,6 +61,7 @@ private:
     std::list<balas*>enemyBullets;
     std::list<enemy1*> enemies;
 
+    short escena;
 
     void keyPressEvent(QKeyEvent* event);
     void keyReleaseEvent(QKeyEvent* event);

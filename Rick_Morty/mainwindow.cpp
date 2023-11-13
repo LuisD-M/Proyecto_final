@@ -8,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     scene1 = new QGraphicsScene;
     ui->graphicsView->setScene(scene1);
+    escena = 1;
 
     QImage fondo1(":/Imagenes/Fondo1.jpg");
     QBrush BrochaF1(fondo1);
@@ -40,6 +41,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     scene1->addItem(vidas);
     vidas->setPos(1000,0);
 
+
 }
 
 MainWindow::~MainWindow()
@@ -49,53 +51,70 @@ MainWindow::~MainWindow()
 
 void MainWindow::keyPressEvent(QKeyEvent *event)
 {
-    int step=5;                                         //Velocidad personaje
-
     keysPressed.insert(event->key());
+    switch (escena) {
+    case 1:
+    {
+        int step=5;                                         //Velocidad personaje
 
-    if (keysPressed.contains(Qt::Key_A) && keysPressed.contains(Qt::Key_W)){
-        personaje->moveBy(-step, -step);
-        personaje->setRotation(-45);
+        if (keysPressed.contains(Qt::Key_A) && keysPressed.contains(Qt::Key_W)){
+            personaje->moveBy(-step, -step);
+            personaje->setRotation(-45);
 
-    }
-    else if (keysPressed.contains(Qt::Key_A) && keysPressed.contains(Qt::Key_S)){
-        personaje->moveBy(-step, step);
-        personaje->setRotation(225);
-
-    }
-    else if (keysPressed.contains(Qt::Key_D) && keysPressed.contains(Qt::Key_W)){
-        personaje->moveBy(step, -step);
-        personaje->setRotation(45);
-
-    }
-    else if (keysPressed.contains(Qt::Key_D) && keysPressed.contains(Qt::Key_S)){
-        personaje->moveBy(step, step);
-        personaje->setRotation(135);
-
-    }
-    else {
-        switch (event->key())
-        {
-        case Qt::Key_A:
-            personaje->moveBy(-step, 0);
-            personaje->setRotation(0);
-            break;
-        case Qt::Key_D:
-            personaje->moveBy(step, 0);
-            personaje->setRotation(0);
-            break;
-        case Qt::Key_W:
-            personaje->moveBy(0, -step);
-            personaje->setRotation(-90);
-            break;
-        case Qt::Key_S:
-            personaje->moveBy(0, step);
-            personaje->setRotation(90);
-            break;
-        default:
-            break;
         }
+        else if (keysPressed.contains(Qt::Key_A) && keysPressed.contains(Qt::Key_S)){
+            personaje->moveBy(-step, step);
+            personaje->setRotation(225);
+
+        }
+        else if (keysPressed.contains(Qt::Key_D) && keysPressed.contains(Qt::Key_W)){
+            personaje->moveBy(step, -step);
+            personaje->setRotation(45);
+
+        }
+        else if (keysPressed.contains(Qt::Key_D) && keysPressed.contains(Qt::Key_S)){
+            personaje->moveBy(step, step);
+            personaje->setRotation(135);
+
+        }
+        else {
+            switch (event->key())
+            {
+            case Qt::Key_A:
+                personaje->moveBy(-step, 0);
+                personaje->setRotation(0);
+                break;
+            case Qt::Key_D:
+                personaje->moveBy(step, 0);
+                personaje->setRotation(0);
+                break;
+            case Qt::Key_W:
+                personaje->moveBy(0, -step);
+                personaje->setRotation(-90);
+                break;
+            case Qt::Key_S:
+                personaje->moveBy(0, step);
+                personaje->setRotation(90);
+                break;
+            default:
+                break;
+            }
+        }
+        break;
     }
+    case 2:
+    {
+        break;
+    }
+    case 3:
+    {
+        break;
+    }
+    default:
+        qDebug() << "ERROR: la escena no existe";
+        break;
+    }
+
 }
 
 void MainWindow::keyReleaseEvent(QKeyEvent* event)
@@ -105,12 +124,29 @@ void MainWindow::keyReleaseEvent(QKeyEvent* event)
 
 void MainWindow::mousePressEvent(QMouseEvent *event)
 {
-    QPointF mousePos = ui->graphicsView->mapToScene(event->pos());         //
-    balas *bala = new balas(mousePos, personaje->getPos());                //crea nueva bala desde la posicion del heroe
-    bala->balasAzules();
-    scene1->addItem(bala->getElip());
-    allyBullets.push_front(bala);
-    setFocus();                                                             //Recibir eventos del teclado y raton
+    switch (escena) {
+    case 1:
+    {
+        QPointF mousePos = ui->graphicsView->mapToScene(event->pos());         //
+        balas *bala = new balas(mousePos, personaje->getPos());                //crea nueva bala desde la posicion del heroe
+        bala->balasAzules();
+        scene1->addItem(bala->getElip());
+        allyBullets.push_front(bala);
+        break;
+    }
+    case 2:
+    {
+
+        break;
+    }
+    case 3:
+    {
+
+        break;
+    }
+    default:
+        break;
+    }
 }
 
 void MainWindow::bulletMove()

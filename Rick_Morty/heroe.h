@@ -17,15 +17,15 @@ class heroe : public QObject, public QGraphicsItem
 private:
     int posx=545, posy=300;                                      // posición del heroe en la escena.
     int velocidad=30;
+    QPixmap *pixmap1;
+    float ancho, alto;        // Para  determinar la posición y el tamaño del sprite en la hoja de sprites
 
 public:
     explicit heroe(QObject *parent = nullptr);
 
-    sprite(int x, int y);                       // Constructor para inicializar  las posiciones posx e posy del sprite
+    heroe(int x, int y);                       // Constructor para inicializar  las posiciones posx e posy del sprite
     //QTimer *timer1;                                            // Puntero a un QTimer programar actualziacion del sprite
-    QPixmap *pixmap1;
 
-    float ancho, alto;        // Para  determinar la posición y el tamaño del sprite en la hoja de sprites
 
     QRectF boundingRect() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);

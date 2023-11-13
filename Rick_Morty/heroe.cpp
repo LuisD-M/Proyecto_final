@@ -9,7 +9,7 @@ heroe::heroe(QObject *parent) : QObject{parent}
     alto = 315;
 }
 
-heroe::sprite(int x, int y)
+heroe::heroe(int x, int y)
 {
     posx = x;
     posy = y;
@@ -31,6 +31,7 @@ void heroe::moveBy(int x, int y)
 {
     posy +=y;
     posx +=x;
+
     setPos(posx,posy);
 }
 
@@ -54,7 +55,6 @@ QPointF heroe::getPos() const
 {
     return mapToScene(0,0);
 }
-
 
 
 
