@@ -42,14 +42,10 @@ public:
     void balasAzules();                          //Pintar fondo de las balas heroe
     void balasAmarillas();
 
-
-
-
 private:
     int velx, vely;
     const int vel = 10, ancho = 10, alto = 10;
     QGraphicsEllipseItem *elip;
-
 };
 
 #endif // BALAS_H

@@ -21,10 +21,14 @@
 #include <QKeyEvent>
 #include <QSet>
 #include <QGraphicsEllipseItem>
+#include <QFont>
+#include <QGraphicsTextItem>
 
 #include <heroe.h>
 #include <balas.h>
 #include <enemy1.h>
+#include <puntaje.h>
+#include <vida.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -38,8 +42,7 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    //void keyPressEvent(QKeyEvent * event);
-
+    void gameover();
 
 private:
     Ui::MainWindow *ui;
@@ -51,9 +54,13 @@ private:
     QTimer *enemyTimer;
     heroe *personaje;
     enemy1 *villano;
+    puntaje *puntos;
+    vida *vidas;
+
     std::list<balas*> allyBullets;
     std::list<balas*>enemyBullets;
     std::list<enemy1*> enemies;
+
 
     void keyPressEvent(QKeyEvent* event);
     void keyReleaseEvent(QKeyEvent* event);

@@ -13,13 +13,17 @@ SOURCES += \
     enemy1.cpp \
     heroe.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    puntaje.cpp \
+    vida.cpp
 
 HEADERS += \
     balas.h \
     enemy1.h \
     heroe.h \
-    mainwindow.h
+    mainwindow.h \
+    puntaje.h \
+    vida.h
 
 FORMS += \
     mainwindow.ui

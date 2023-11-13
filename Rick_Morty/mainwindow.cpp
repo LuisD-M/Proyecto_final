@@ -26,16 +26,19 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
         colission();
         setFocus();
     });                                                         //Conecta el temporizador para mover balas
-
-    timer->start(16);                                                             // 16
-
-    //timer1 = new QTimer(this);
-    //connect(timer1, SIGNAL(timeout()), this, SLOT(enemyBulletGeneration()));
-    //timer1->start(16);
+    timer->start(10);                                                             // 16
 
     enemyTimer = new QTimer(this);
     connect(enemyTimer, SIGNAL(timeout()), this, SLOT(enemyGeneration()));
     enemyTimer->start(2000);
+
+    puntos = new puntaje;                            //añade puntaje
+    scene1->addItem(puntos);
+    puntos->setPos(0,0);
+
+    vidas = new vida;
+    scene1->addItem(vidas);
+    vidas->setPos(1000,0);
 
 }
 
@@ -46,7 +49,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::keyPressEvent(QKeyEvent *event)
 {
-    int step=2;
+    int step=5;                                         //Velocidad personaje
 
     keysPressed.insert(event->key());
 
@@ -207,13 +210,12 @@ void MainWindow::enemyBulletGeneration()
 
 void MainWindow::colission()
 {
-    for (auto itEnemy = enemies.begin(); itEnemy != enemies.end();)
-    {
+    for (auto itEnemy = enemies.begin(); itEnemy != enemies.end();){
         bool erased = false;
-        for (auto itBullet = allyBullets.begin(); itBullet != allyBullets.end();)
-        {
-            if((*itEnemy)->collidesWithItem((*itBullet)->getElip()))
-            {
+        for (auto itBullet = allyBullets.begin(); itBullet != allyBullets.end();){
+
+            if((*itEnemy)->collidesWithItem((*itBullet)->getElip())){
+
                 erased = true;
 
                 scene1->removeItem((*itBullet)->getElip());
@@ -224,6 +226,7 @@ void MainWindow::colission()
 
                 itEnemy = enemies.erase(itEnemy);
                 itBullet = allyBullets.erase(itBullet);
+                puntos->increaseN1();
 
                 delete (enemigo);
                 delete (bala);
@@ -234,5 +237,47 @@ void MainWindow::colission()
         }
         if (!erased) itEnemy++;
     }
+
+    for(auto it = enemyBullets.begin(); it != enemyBullets.end();){
+        if(personaje -> collidesWithItem((*it)->getElip())){
+
+            scene1->removeItem((*it)->getElip());
+
+            balas *bala = (*it);
+
+            it = enemyBullets.erase(it);
+            vidas->lessVidaN1();
+
+            delete (bala);
+
+        }
+        else
+            it++;
+    }
+
+    if(vidas->getVidaN1()== 0){
+        scene1->removeItem(personaje);
+
+        for (auto enemy : enemies) {
+            scene1->removeItem(enemy);
+            delete enemy;
+        }
+        enemies.clear();
+
+        for (auto bullet : enemyBullets) {
+            scene1->removeItem(bullet->getElip());
+            delete bullet;
+        }
+        enemyBullets.clear();
+
+        QGraphicsTextItem *gameOverText = new QGraphicsTextItem("Game Over");
+        QFont font("Comic Sans MS", 30);
+        gameOverText->setFont(font);
+        gameOverText->setDefaultTextColor(Qt::black);
+        gameOverText->setPos(scene1->width() / 2 - 100, scene1->height() / 2 - 50);
+        scene1->addItem(gameOverText);
+
+    }
 }
+
 

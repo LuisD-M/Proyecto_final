@@ -16,11 +16,6 @@ enemy1::enemy1(int x, int y)
     setPos(posx,posy);
 }
 
-/*enemy1::enemy1(QPixmap *pixmap1_2)
-{
-    this ->pixmap1_2 = pixmap1_2;
-} */
-
 QRectF enemy1::boundingRect() const
 {
     return QRectF(-ancho/2,-alto/2,ancho,alto);
@@ -60,13 +55,3 @@ QPointF enemy1::getPos() const
     return mapToScene(0,0);
 }
 
-/*QPixmap *enemy1::getElip() const
-{
-    return pixmap1_2;
-}
-
-void enemy1::setElip(QPixmap *newPixmap)
-{
-    pixmap1_2 = newPixmap;
-}
-*/
