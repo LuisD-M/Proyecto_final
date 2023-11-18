@@ -592,7 +592,6 @@ void MainWindow::cambioEscena()
         personaje->setPos(scene1->width()/2,scene1->height()/2);
         escena = 2;
 
-
         scene2->addItem(puntos);
         puntos->setPos(0,0);
         scene2->addItem(vidas);
