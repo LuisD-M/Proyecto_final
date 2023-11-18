@@ -9,8 +9,8 @@
 #include <QObject>
 #include <QTimer>
 #include <QPixmap>
+#include <QGraphicsPixmapItem>
 #include <QRect>
-//#include <QDesktopWidget>
 #include <QDebug>
 #include <QResizeEvent>
 #include <QGraphicsView>
@@ -46,6 +46,7 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    QGraphicsScene *sccene;
     QGraphicsScene *scene1;
     QGraphicsScene *scene2;
     QGraphicsScene *scene3;
@@ -54,6 +55,7 @@ private:
     QTimer *timer;
     QTimer *timer1;
     QTimer *enemyTimer;
+    QTimer *timerbalas;
     heroe *personaje;
     enemy1 *villano;
     puntaje *puntos;

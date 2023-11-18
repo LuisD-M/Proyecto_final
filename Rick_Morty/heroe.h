@@ -9,6 +9,7 @@
 #include <QGraphicsScene>
 #include <QKeyEvent>
 #include <QWidget>
+#include <QGraphicsPixmapItem>
 
 class heroe : public QObject, public QGraphicsItem
 {
