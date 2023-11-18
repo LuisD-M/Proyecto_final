@@ -6,39 +6,48 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 {
     ui->setupUi(this);
 
+    sccene = new QGraphicsScene;
     scene1 = new QGraphicsScene;
     scene2 = new QGraphicsScene;
     scene3 = new QGraphicsScene;
     ui->graphicsView->setScene(scene1);
     escena = 1;
 
-
+    int dificultad = 10;
 
     QImage fondo1(":/Imagenes/Fondo1.jpg");
     QBrush BrochaF1(fondo1);
 
     ui->graphicsView->setBackgroundBrush(BrochaF1);    //Pinta el fondo del nivel 1 y se escala
+
+    sccene->setSceneRect(0,0,1080,599);
     scene1->setSceneRect(0,0,1080,599);
     scene2->setSceneRect(0,0,1080,599);
     scene3->setSceneRect(0,0,1080,599);
 
     personaje = new heroe();                                 // crea heroe
+
     scene1->addItem(personaje);                               //Añade a la escena
     personaje->setPos(scene1->width()/2,scene1->height()/2);
 
     timer = new QTimer();
     connect(timer, &QTimer::timeout, this, [this]{
         bulletMove();
-//        enemyBulletGeneration();
+      //  enemyBulletGeneration();
         colission();
         setFocus();
         cambioEscena();
     });                                                         //Conecta el temporizador para mover balas
     timer->start(10);                                                             // 16
 
+
+    //timerbalas = new QTimer(this);
+    //connect(timerbalas, SIGNAL(timeout()), this, SLOT(enemyBulletGeneration()));
+    //timerbalas->start(dificultad);
+
     enemyTimer = new QTimer(this);
     connect(enemyTimer, SIGNAL(timeout()), this, SLOT(enemyGeneration()));
-    enemyTimer->start(200);
+    enemyTimer->start(2000);
 
     puntos = new puntaje;                            //añade puntaje
     scene1->addItem(puntos);
@@ -47,8 +56,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     vidas = new vida;
     scene1->addItem(vidas);
     vidas->setPos(1000,0);
-
-
 }
 
 MainWindow::~MainWindow()
@@ -89,6 +96,7 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
             {
             case Qt::Key_A:
                 personaje->moveBy(-step, 0);
+
                 personaje->setRotation(0);
                 break;
             case Qt::Key_D:
@@ -587,6 +595,11 @@ void MainWindow::cambioEscena()
         eliminaItems(scene1);
 
         ui->graphicsView->setScene(scene2);
+
+        QImage fondo2(":/Imagenes/Fondo2.png");
+        QBrush BrochaF2(fondo2);
+
+        ui->graphicsView->setBackgroundBrush(BrochaF2);    //Pinta el fondo del nivel 2 y se escala
 
         scene2->addItem(personaje);
         personaje->setPos(scene1->width()/2,scene1->height()/2);
