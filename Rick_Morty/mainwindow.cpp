@@ -3,11 +3,12 @@
 #include <QGraphicsView>
 
 
-MainWindow::MainWindow(QWidget *parent, int dificultad) : QMainWindow(parent), ui(new Ui::MainWindow)
+MainWindow::MainWindow(QWidget *parent, int dificultad, short selpersonaje) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
     this->dificultad = dificultad;
+    this->selpersonaje = selpersonaje;
 
     scene1 = new QGraphicsScene;
     scene2 = new QGraphicsScene;

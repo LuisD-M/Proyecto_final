@@ -41,7 +41,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr, int dificultad=0);
+    MainWindow(QWidget *parent = nullptr, int dificultad=0, short selpersonaje=0);
     ~MainWindow();
 
     void gameover();
@@ -70,6 +70,7 @@ private:
 
     short escena;
     int dificultad;
+    short selpersonaje;
 
     void eliminaItems(QGraphicsScene *scene);
     void perdiste(QGraphicsScene *scene);

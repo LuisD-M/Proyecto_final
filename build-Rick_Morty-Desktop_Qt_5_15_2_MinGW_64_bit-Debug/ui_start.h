@@ -11,7 +11,6 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
@@ -28,7 +27,6 @@ public:
     QPushButton *DifiMedio;
     QPushButton *DifiEasy;
     QPushButton *DifiHard;
-    QLabel *label;
     QPushButton *Rick;
     QPushButton *Morty;
     QMenuBar *menubar;
@@ -38,38 +36,40 @@ public:
     {
         if (start->objectName().isEmpty())
             start->setObjectName(QString::fromUtf8("start"));
-        start->resize(800, 400);
+        start->resize(803, 421);
         centralwidget = new QWidget(start);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         pushButton = new QPushButton(centralwidget);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(40, 300, 121, 41));
+        pushButton->setGeometry(QRect(670, 370, 121, 31));
+        QFont font;
+        font.setPointSize(10);
+        font.setBold(true);
+        pushButton->setFont(font);
         DifiMedio = new QPushButton(centralwidget);
         DifiMedio->setObjectName(QString::fromUtf8("DifiMedio"));
-        DifiMedio->setGeometry(QRect(40, 120, 121, 31));
+        DifiMedio->setGeometry(QRect(20, 190, 121, 31));
+        DifiMedio->setFont(font);
         DifiEasy = new QPushButton(centralwidget);
         DifiEasy->setObjectName(QString::fromUtf8("DifiEasy"));
-        DifiEasy->setGeometry(QRect(40, 70, 121, 31));
+        DifiEasy->setGeometry(QRect(20, 150, 121, 31));
+        DifiEasy->setFont(font);
         DifiHard = new QPushButton(centralwidget);
         DifiHard->setObjectName(QString::fromUtf8("DifiHard"));
-        DifiHard->setGeometry(QRect(40, 170, 121, 31));
-        label = new QLabel(centralwidget);
-        label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(50, 30, 101, 31));
-        QFont font;
-        font.setPointSize(12);
-        font.setBold(true);
-        label->setFont(font);
+        DifiHard->setGeometry(QRect(20, 230, 121, 31));
+        DifiHard->setFont(font);
         Rick = new QPushButton(centralwidget);
         Rick->setObjectName(QString::fromUtf8("Rick"));
-        Rick->setGeometry(QRect(290, 240, 141, 41));
+        Rick->setGeometry(QRect(200, 370, 141, 31));
+        Rick->setFont(font);
         Morty = new QPushButton(centralwidget);
         Morty->setObjectName(QString::fromUtf8("Morty"));
-        Morty->setGeometry(QRect(540, 240, 141, 41));
+        Morty->setGeometry(QRect(370, 370, 141, 31));
+        Morty->setFont(font);
         start->setCentralWidget(centralwidget);
         menubar = new QMenuBar(start);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 800, 21));
+        menubar->setGeometry(QRect(0, 0, 803, 21));
         start->setMenuBar(menubar);
         statusbar = new QStatusBar(start);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -83,12 +83,14 @@ public:
     void retranslateUi(QMainWindow *start)
     {
         start->setWindowTitle(QCoreApplication::translate("start", "MainWindow", nullptr));
-        pushButton->setText(QCoreApplication::translate("start", "JUGAR", nullptr));
+        pushButton->setText(QCoreApplication::translate("start", "START", nullptr));
         DifiMedio->setText(QCoreApplication::translate("start", "MEDIUM", nullptr));
         DifiEasy->setText(QCoreApplication::translate("start", "EASY", nullptr));
         DifiHard->setText(QCoreApplication::translate("start", "HARD", nullptr));
-        label->setText(QCoreApplication::translate("start", "DIFICULTAD", nullptr));
         Rick->setText(QCoreApplication::translate("start", "RICK", nullptr));
+#if QT_CONFIG(accessibility)
+        Morty->setAccessibleDescription(QCoreApplication::translate("start", "<html><head/><body><p align=\"center\"><br/></p></body></html>", nullptr));
+#endif // QT_CONFIG(accessibility)
         Morty->setText(QCoreApplication::translate("start", "MORTY", nullptr));
     } // retranslateUi
 

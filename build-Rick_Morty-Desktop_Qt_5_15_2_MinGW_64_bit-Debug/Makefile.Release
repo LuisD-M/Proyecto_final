@@ -148,6 +148,7 @@ release/qrc_imagenes.cpp: ../Rick_Morty/imagenes.qrc \
 		C:/Qt/5.15.2/mingw81_64/bin/rcc.exe \
 		../Rick_Morty/Imagenes/Rick.png \
 		../Rick_Morty/Imagenes/Fondo2.png \
+		../Rick_Morty/Imagenes/FondoVentana1.png \
 		../Rick_Morty/Imagenes/Escolta.jpg \
 		../Rick_Morty/Imagenes/Morty.jpg \
 		../Rick_Morty/Imagenes/Fondo1.jpg \
@@ -668,6 +669,7 @@ release/moc_mainwindow.cpp: ../Rick_Morty/mainwindow.h \
 		../Rick_Morty/puntaje.h \
 		../Rick_Morty/vida.h \
 		../Rick_Morty/start.h \
+		../Rick_Morty/mainwindow.h \
 		release/moc_predefs.h \
 		C:/Qt/5.15.2/mingw81_64/bin/moc.exe
 	C:\Qt\5.15.2\mingw81_64\bin\moc.exe $(DEFINES) --include "C:/Users/luis/Desktop/Universidad/NIVEL 9/Informatica 2/Juego/build-Rick_Morty-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/release/moc_predefs.h" -IC:/Qt/5.15.2/mingw81_64/mkspecs/win32-g++ -I"C:/Users/luis/Desktop/Universidad/NIVEL 9/Informatica 2/Juego/Rick_Morty" -IC:/Qt/5.15.2/mingw81_64/include -IC:/Qt/5.15.2/mingw81_64/include/QtWidgets -IC:/Qt/5.15.2/mingw81_64/include/QtGui -IC:/Qt/5.15.2/mingw81_64/include/QtANGLE -IC:/Qt/5.15.2/mingw81_64/include/QtCore -I. -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include ..\Rick_Morty\mainwindow.h -o release\moc_mainwindow.cpp
@@ -992,6 +994,46 @@ release/moc_start.cpp: ../Rick_Morty/start.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtouchdevice.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qtabwidget.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qicon.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QGraphicsRectItem \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qgraphicsitem.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtGui/qpainterpath.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QGraphicsView \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qgraphicsview.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtGui/qpainter.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextoption.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtGui/qpen.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qscrollarea.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qframe.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qgraphicsscene.h \
+		../Rick_Morty/mainwindow.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QGraphicsScene \
+		C:/Qt/5.15.2/mingw81_64/include/QtGui/QKeyEvent \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QList \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QObject \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QTimer \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qtimer.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qbasictimer.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtGui/QPixmap \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QGraphicsPixmapItem \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QRect \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QDebug \
+		C:/Qt/5.15.2/mingw81_64/include/QtGui/QResizeEvent \
+		C:/Qt/5.15.2/mingw81_64/include/QtGui/QBrush \
+		C:/Qt/5.15.2/mingw81_64/include/QtGui/QPainter \
+		C:/Qt/5.15.2/mingw81_64/include/QtGui/QPen \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QSet \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QGraphicsEllipseItem \
+		C:/Qt/5.15.2/mingw81_64/include/QtGui/QFont \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QGraphicsTextItem \
+		../Rick_Morty/heroe.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QGraphicsItem \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QWidget \
+		../Rick_Morty/balas.h \
+		../Rick_Morty/enemy1.h \
+		../Rick_Morty/puntaje.h \
+		../Rick_Morty/vida.h \
+		../Rick_Morty/start.h \
 		release/moc_predefs.h \
 		C:/Qt/5.15.2/mingw81_64/bin/moc.exe
 	C:\Qt\5.15.2\mingw81_64\bin\moc.exe $(DEFINES) --include "C:/Users/luis/Desktop/Universidad/NIVEL 9/Informatica 2/Juego/build-Rick_Morty-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/release/moc_predefs.h" -IC:/Qt/5.15.2/mingw81_64/mkspecs/win32-g++ -I"C:/Users/luis/Desktop/Universidad/NIVEL 9/Informatica 2/Juego/Rick_Morty" -IC:/Qt/5.15.2/mingw81_64/include -IC:/Qt/5.15.2/mingw81_64/include/QtWidgets -IC:/Qt/5.15.2/mingw81_64/include/QtGui -IC:/Qt/5.15.2/mingw81_64/include/QtANGLE -IC:/Qt/5.15.2/mingw81_64/include/QtCore -I. -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include ..\Rick_Morty\start.h -o release\moc_start.cpp
@@ -2115,6 +2157,45 @@ release/start.o: ../Rick_Morty/start.cpp ../Rick_Morty/start.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtouchdevice.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qtabwidget.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qicon.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QGraphicsRectItem \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qgraphicsitem.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtGui/qpainterpath.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QGraphicsView \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qgraphicsview.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtGui/qpainter.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextoption.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtGui/qpen.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qscrollarea.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qframe.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qgraphicsscene.h \
+		../Rick_Morty/mainwindow.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QGraphicsScene \
+		C:/Qt/5.15.2/mingw81_64/include/QtGui/QKeyEvent \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QList \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QObject \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QTimer \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qtimer.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qbasictimer.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtGui/QPixmap \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QGraphicsPixmapItem \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QRect \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QDebug \
+		C:/Qt/5.15.2/mingw81_64/include/QtGui/QResizeEvent \
+		C:/Qt/5.15.2/mingw81_64/include/QtGui/QBrush \
+		C:/Qt/5.15.2/mingw81_64/include/QtGui/QPainter \
+		C:/Qt/5.15.2/mingw81_64/include/QtGui/QPen \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QSet \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QGraphicsEllipseItem \
+		C:/Qt/5.15.2/mingw81_64/include/QtGui/QFont \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QGraphicsTextItem \
+		../Rick_Morty/heroe.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QGraphicsItem \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QWidget \
+		../Rick_Morty/balas.h \
+		../Rick_Morty/enemy1.h \
+		../Rick_Morty/puntaje.h \
+		../Rick_Morty/vida.h \
 		ui_start.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/QVariant \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QApplication \
@@ -2124,11 +2205,18 @@ release/start.o: ../Rick_Morty/start.cpp ../Rick_Morty/start.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdesktopwidget.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qguiapplication.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qinputmethod.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QDialog \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdialog.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLabel \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlabel.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QMenuBar \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qmenubar.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qmenu.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qaction.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qactiongroup.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QPushButton \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qpushbutton.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qabstractbutton.h
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qabstractbutton.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QStatusBar \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qstatusbar.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\start.o ..\Rick_Morty\start.cpp
 
 release/vida.o: ../Rick_Morty/vida.cpp ../Rick_Morty/vida.h \
