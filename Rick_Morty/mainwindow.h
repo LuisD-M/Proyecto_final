@@ -30,6 +30,7 @@
 #include <puntaje.h>
 #include <vida.h>
 #include <start.h>
+#include <heroe2.h>
 
 
 QT_BEGIN_NAMESPACE
@@ -41,7 +42,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr, int dificultad=0, short selpersonaje=0);
+    MainWindow(QWidget *parent = nullptr, int dificultad=0, short selheroe=0);
     ~MainWindow();
 
     void gameover();
@@ -70,7 +71,7 @@ private:
 
     short escena;
     int dificultad;
-    short selpersonaje;
+    short selheroe;
 
     void eliminaItems(QGraphicsScene *scene);
     void perdiste(QGraphicsScene *scene);

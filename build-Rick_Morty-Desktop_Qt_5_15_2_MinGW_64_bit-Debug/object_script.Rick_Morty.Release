@@ -1,6 +1,7 @@
 release/balas.o
 release/enemy1.o
 release/heroe.o
+release/heroe2.o
 release/main.o
 release/mainwindow.o
 release/obstaculo.o
@@ -11,6 +12,7 @@ release/qrc_imagenes.o
 release/moc_balas.o
 release/moc_enemy1.o
 release/moc_heroe.o
+release/moc_heroe2.o
 release/moc_mainwindow.o
 release/moc_obstaculo.o
 release/moc_puntaje.o

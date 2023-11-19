@@ -3,12 +3,12 @@
 #include <QGraphicsView>
 
 
-MainWindow::MainWindow(QWidget *parent, int dificultad, short selpersonaje) : QMainWindow(parent), ui(new Ui::MainWindow)
+MainWindow::MainWindow(QWidget *parent, int dificultad, short selheroe) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
     this->dificultad = dificultad;
-    this->selpersonaje = selpersonaje;
+    this->selheroe = selheroe;
 
     scene1 = new QGraphicsScene;
     scene2 = new QGraphicsScene;
@@ -16,21 +16,23 @@ MainWindow::MainWindow(QWidget *parent, int dificultad, short selpersonaje) : QM
     ui->graphicsView->setScene(scene1);
     escena = 1;
 
-
-
-    //int dificultad = 10;
-
-
     QImage fondo1(":/Imagenes/Fondo1.jpg");
     QBrush BrochaF1(fondo1);
-
     ui->graphicsView->setBackgroundBrush(BrochaF1);    //Pinta el fondo del nivel 1 y se escala
 
     scene1->setSceneRect(0,0,1080,599);
     scene2->setSceneRect(0,0,1080,599);
     scene3->setSceneRect(0,0,1080,599);
 
-    personaje = new heroe();                                 // crea heroe
+
+    if(selheroe==1)
+        personaje = new heroe();
+
+    else if(selheroe==2)
+        personaje = new heroe2;
+
+    else
+        personaje = new heroe();                                 // crea heroe
 
     scene1->addItem(personaje);                               //Añade a la escena
     personaje->setPos(scene1->width()/2,scene1->height()/2);
@@ -38,7 +40,6 @@ MainWindow::MainWindow(QWidget *parent, int dificultad, short selpersonaje) : QM
     timer = new QTimer();
     connect(timer, &QTimer::timeout, this, [this]{
         bulletMove();
-      //  enemyBulletGeneration();
         colission();
         setFocus();
         cambioEscena();
