@@ -1,11 +1,13 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QGraphicsView>
-#include "start.h"
 
-MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
+
+MainWindow::MainWindow(QWidget *parent, int dificultad) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    this->dificultad = dificultad;
 
     scene1 = new QGraphicsScene;
     scene2 = new QGraphicsScene;
@@ -13,7 +15,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->graphicsView->setScene(scene1);
     escena = 1;
 
-    int dificultad = 10;
+
+
+    //int dificultad = 10;
+
 
     QImage fondo1(":/Imagenes/Fondo1.jpg");
     QBrush BrochaF1(fondo1);
@@ -40,9 +45,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     timer->start(10);                                                             // 16
 
 
-    //timerbalas = new QTimer(this);
-    //connect(timerbalas, SIGNAL(timeout()), this, SLOT(enemyBulletGeneration()));
-    //timerbalas->start(dificultad);
+    timerbalas = new QTimer(this);
+    connect(timerbalas, SIGNAL(timeout()), this, SLOT(enemyBulletGeneration()));
+    timerbalas->start(dificultad);
 
     enemyTimer = new QTimer(this);
     connect(enemyTimer, SIGNAL(timeout()), this, SLOT(enemyGeneration()));

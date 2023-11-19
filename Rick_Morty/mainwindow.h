@@ -29,6 +29,7 @@
 #include <enemy1.h>
 #include <puntaje.h>
 #include <vida.h>
+#include <start.h>
 
 
 QT_BEGIN_NAMESPACE
@@ -40,10 +41,11 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    MainWindow(QWidget *parent = nullptr, int dificultad=0);
     ~MainWindow();
 
     void gameover();
+
 
 private:
     Ui::MainWindow *ui;
@@ -67,6 +69,7 @@ private:
     std::list<enemy1*> enemies;
 
     short escena;
+    int dificultad;
 
     void eliminaItems(QGraphicsScene *scene);
     void perdiste(QGraphicsScene *scene);
