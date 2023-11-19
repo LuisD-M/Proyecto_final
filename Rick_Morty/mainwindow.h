@@ -30,6 +30,7 @@
 #include <puntaje.h>
 #include <vida.h>
 
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -46,7 +47,7 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    QGraphicsScene *sccene;
+
     QGraphicsScene *scene1;
     QGraphicsScene *scene2;
     QGraphicsScene *scene3;
@@ -84,3 +85,4 @@ private slots:
 
 };
 #endif // MAINWINDOW_H
+

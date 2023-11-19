@@ -16,6 +16,7 @@ SOURCES += \
     mainwindow.cpp \
     obstaculo.cpp \
     puntaje.cpp \
+    start.cpp \
     vida.cpp
 
 HEADERS += \
@@ -25,10 +26,12 @@ HEADERS += \
     mainwindow.h \
     obstaculo.h \
     puntaje.h \
+    start.h \
     vida.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    start.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -1,12 +1,12 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QGraphicsView>
+#include "start.h"
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
-    sccene = new QGraphicsScene;
     scene1 = new QGraphicsScene;
     scene2 = new QGraphicsScene;
     scene3 = new QGraphicsScene;
@@ -20,7 +20,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     ui->graphicsView->setBackgroundBrush(BrochaF1);    //Pinta el fondo del nivel 1 y se escala
 
-    sccene->setSceneRect(0,0,1080,599);
     scene1->setSceneRect(0,0,1080,599);
     scene2->setSceneRect(0,0,1080,599);
     scene3->setSceneRect(0,0,1080,599);
@@ -333,7 +332,7 @@ void MainWindow::enemyGeneration()
         }
         break;
         }
-        villano = new enemy1();
+        villano = new enemy1();                                    //
         scene1->addItem(villano);
         villano->setPos(posx,posy);
         enemies.push_front(villano);
