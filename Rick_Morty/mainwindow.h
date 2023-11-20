@@ -29,6 +29,9 @@
 #include <enemy1.h>
 #include <puntaje.h>
 #include <vida.h>
+#include <start.h>
+#include <heroe2.h>
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -39,14 +42,15 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    MainWindow(QWidget *parent = nullptr, int dificultad=0, short selheroe=0);
     ~MainWindow();
 
     void gameover();
 
+
 private:
     Ui::MainWindow *ui;
-    QGraphicsScene *sccene;
+
     QGraphicsScene *scene1;
     QGraphicsScene *scene2;
     QGraphicsScene *scene3;
@@ -66,6 +70,8 @@ private:
     std::list<enemy1*> enemies;
 
     short escena;
+    int dificultad;
+    short selheroe;
 
     void eliminaItems(QGraphicsScene *scene);
     void perdiste(QGraphicsScene *scene);
@@ -84,3 +90,4 @@ private slots:
 
 };
 #endif // MAINWINDOW_H
+

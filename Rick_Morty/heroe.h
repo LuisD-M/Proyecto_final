@@ -18,8 +18,13 @@ class heroe : public QObject, public QGraphicsItem
 private:
     int posx=545, posy=300;                                      // posición del heroe en la escena.
     int velocidad=30;
+
+    //QPixmap *pixmap1;
+    //float ancho, alto;        // Para  determinar la posición y el tamaño del sprite en la hoja de sprites
+
+protected:  // Cambiamos de privado a protegido
     QPixmap *pixmap1;
-    float ancho, alto;        // Para  determinar la posición y el tamaño del sprite en la hoja de sprites
+    float ancho, alto;
 
 public:
     explicit heroe(QObject *parent = nullptr);
@@ -39,7 +44,8 @@ public:
     QPointF getPos() const;
 
     void moveBy(int x, int y);
-
 };
 
 #endif // HEROE_H
+
+
