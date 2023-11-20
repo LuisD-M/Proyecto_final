@@ -5,6 +5,7 @@ heroe::heroe(QObject *parent) : QObject{parent}
 {
     pixmap1 = new QPixmap(":/Imagenes/Rick.png");                     // inicializar puntero de QPixmap
 
+
     ancho = 159;                                                    //dimensiones imagen
     alto = 315;
 }

@@ -12,23 +12,28 @@ SOURCES += \
     balas.cpp \
     enemy1.cpp \
     heroe.cpp \
+    heroe2.cpp \
     main.cpp \
     mainwindow.cpp \
     obstaculo.cpp \
     puntaje.cpp \
+    start.cpp \
     vida.cpp
 
 HEADERS += \
     balas.h \
     enemy1.h \
     heroe.h \
+    heroe2.h \
     mainwindow.h \
     obstaculo.h \
     puntaje.h \
+    start.h \
     vida.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    start.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
