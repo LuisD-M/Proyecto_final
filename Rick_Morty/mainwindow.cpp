@@ -6,7 +6,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 {
     ui->setupUi(this);
 
-    sccene = new QGraphicsScene;
     scene1 = new QGraphicsScene;
     scene2 = new QGraphicsScene;
     scene3 = new QGraphicsScene;
@@ -20,7 +19,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     ui->graphicsView->setBackgroundBrush(BrochaF1);    //Pinta el fondo del nivel 1 y se escala
 
-    sccene->setSceneRect(0,0,1080,599);
     scene1->setSceneRect(0,0,1080,599);
     scene2->setSceneRect(0,0,1080,599);
     scene3->setSceneRect(0,0,1080,599);
