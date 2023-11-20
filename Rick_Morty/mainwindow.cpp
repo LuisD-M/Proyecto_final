@@ -44,7 +44,7 @@ MainWindow::MainWindow(QWidget *parent, int dificultad, short selheroe) : QMainW
         setFocus();
         cambioEscena();
     });                                                         //Conecta el temporizador para mover balas
-    timer->start(10);                                                             // 16
+    timer->start(11);                                                             // 16
 
 
     timerbalas = new QTimer(this);
