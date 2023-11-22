@@ -55,13 +55,16 @@ MainWindow::MainWindow(QWidget *parent, int dificultad, short selheroe) : QMainW
     connect(enemyTimer, SIGNAL(timeout()), this, SLOT(enemyGeneration()));
     enemyTimer->start(2000);
 
-    puntos = new puntaje;                            //añade puntaje
-    scene1->addItem(puntos);
-    puntos->setPos(0,0);
+    //puntos = new puntaje;                            //añade puntaje
+    //scene1->addItem(puntos);
+    //puntos->setPos(0,0);
 
-    vidas = new vida;
-    scene1->addItem(vidas);
-    vidas->setPos(1000,0);
+    vidas = 5;
+    on_progressBar_valueChanged(vidas);
+
+    puntos = 0;
+    on_progressBar_Puntuacion_valueChanged(puntos);
+
 }
 
 MainWindow::~MainWindow()
@@ -464,7 +467,9 @@ void MainWindow::colission()
 
                     itEnemy = enemies.erase(itEnemy);
                     itBullet = allyBullets.erase(itBullet);
-                    puntos->increaseN1();
+
+                    puntos++;
+                    on_progressBar_Puntuacion_valueChanged(puntos);
 
                     delete (enemigo);
                     delete (bala);
@@ -480,21 +485,18 @@ void MainWindow::colission()
             if(personaje -> collidesWithItem((*it)->getElip())){
 
                 scene1->removeItem((*it)->getElip());
-
                 balas *bala = (*it);
-
                 it = enemyBullets.erase(it);
-                vidas->lessVidaN1();
+
+                vidas--;
+                on_progressBar_valueChanged(vidas);
 
                 delete (bala);
-
             }
             else
                 it++;
         }
-
-        if(vidas->getVidaN1()== 0){
-
+        if(vidas == 0){
             eliminaItems(scene1);
             perdiste(scene1);
         }
@@ -518,14 +520,15 @@ void MainWindow::colission()
 
                     itEnemy = enemies.erase(itEnemy);
                     itBullet = allyBullets.erase(itBullet);
-                    puntos->increaseN1();
+
+                    puntos++;
+                    on_progressBar_Puntuacion_valueChanged(puntos);
 
                     delete (enemigo);
                     delete (bala);
                     break;
                 }else
                     itBullet++;
-
             }
             if (!erased) itEnemy++;
         }
@@ -534,11 +537,11 @@ void MainWindow::colission()
             if(personaje -> collidesWithItem((*it)->getElip())){
 
                 scene2->removeItem((*it)->getElip());
-
                 balas *bala = (*it);
-
                 it = enemyBullets.erase(it);
-                vidas->lessVidaN1();
+
+                vidas--;
+                on_progressBar_valueChanged(vidas);
 
                 delete (bala);
 
@@ -547,7 +550,7 @@ void MainWindow::colission()
                 it++;
         }
 
-        if(vidas->getVidaN1()== 0){
+        if(vidas == 0){
 
             eliminaItems(scene2);
             perdiste(scene2);
@@ -579,8 +582,6 @@ void MainWindow::eliminaItems(QGraphicsScene *scene)
         delete bullet;
     }
     enemyBullets.clear();
-    scene->removeItem(vidas);
-    scene->removeItem(puntos);
 }
 
 void MainWindow::perdiste(QGraphicsScene *scene)
@@ -595,8 +596,8 @@ void MainWindow::perdiste(QGraphicsScene *scene)
 
 void MainWindow::cambioEscena()
 {
-    int vida = 5;
-    if (escena == 1 && puntos->getpuntaje() >= 10)
+    //int vida = 5;
+    if (escena == 1 && puntos >= 10)
     {
         eliminaItems(scene1);
 
@@ -611,28 +612,35 @@ void MainWindow::cambioEscena()
         personaje->setPos(scene1->width()/2,scene1->height()/2);
         escena = 2;
 
-
-        scene2->addItem(puntos);
-        puntos->setPos(0,0);
-        scene2->addItem(vidas);
-        vidas->setPos(1000,0);
-
-        puntos->setPuntuacion(0);
-        vidas->setVidaN1(vida);
+        puntos = 0;
+        on_progressBar_Puntuacion_valueChanged(puntos);
 
         qDebug() << enemies.size();
-    }else if(escena == 2 && puntos->getpuntaje() >= 10)
+
+    }else if(escena == 2 && puntos >= 10)
     {
         eliminaItems(scene2);
 
         ui->graphicsView->setScene(scene3);
-        vidas->setVidaN1(vida*2);
+
         scene3->addItem(personaje);
         escena = 3;
-        escena = 2;                           //añade puntaje
-        scene3->addItem(puntos);
-        puntos->setPos(0,0);
-        scene3->addItem(vidas);
-        vidas->setPos(1000,0);
+        //escena = 2;                           //añade puntaje
+
     }
 }
+
+void MainWindow::on_progressBar_valueChanged(int value)
+{
+    ui->progressBar->setValue(value);
+    ui->progressBar->setStyleSheet(ui->progressBar->property("defaultStyleSheet").toString() +
+        " QProgressBar::chunk { background: red; }");
+}
+
+void MainWindow::on_progressBar_Puntuacion_valueChanged(int Pun)
+{
+    ui->progressBar_Puntuacion->setValue(Pun);
+    ui->progressBar_Puntuacion->setStyleSheet(ui->progressBar->property("defaultStyleSheet").toString() +
+         " QProgressBar::chunk { background: yellow; }");
+}
+

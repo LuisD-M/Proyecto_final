@@ -5,9 +5,7 @@ debug/heroe2.o
 debug/main.o
 debug/mainwindow.o
 debug/obstaculo.o
-debug/puntaje.o
 debug/start.o
-debug/vida.o
 debug/qrc_imagenes.o
 debug/moc_balas.o
 debug/moc_enemy1.o
@@ -15,6 +13,4 @@ debug/moc_heroe.o
 debug/moc_heroe2.o
 debug/moc_mainwindow.o
 debug/moc_obstaculo.o
-debug/moc_puntaje.o
 debug/moc_start.o
-debug/moc_vida.o

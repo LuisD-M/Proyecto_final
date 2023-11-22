@@ -16,9 +16,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     obstaculo.cpp \
-    puntaje.cpp \
-    start.cpp \
-    vida.cpp
+    start.cpp
 
 HEADERS += \
     balas.h \
@@ -27,9 +25,7 @@ HEADERS += \
     heroe2.h \
     mainwindow.h \
     obstaculo.h \
-    puntaje.h \
-    start.h \
-    vida.h
+    start.h
 
 FORMS += \
     mainwindow.ui \

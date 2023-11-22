@@ -27,8 +27,6 @@
 #include <heroe.h>
 #include <balas.h>
 #include <enemy1.h>
-#include <puntaje.h>
-#include <vida.h>
 #include <start.h>
 #include <heroe2.h>
 
@@ -62,8 +60,9 @@ private:
     QTimer *timerbalas;
     heroe *personaje;
     enemy1 *villano;
-    puntaje *puntos;
-    vida *vidas;
+    //puntaje *puntos;
+
+    //vida *vidas;
 
     std::list<balas*> allyBullets;
     std::list<balas*> enemyBullets;
@@ -72,6 +71,9 @@ private:
     short escena;
     int dificultad;
     short selheroe;
+
+    int vidas;
+    int puntos;
 
     void eliminaItems(QGraphicsScene *scene);
     void perdiste(QGraphicsScene *scene);
@@ -88,6 +90,8 @@ private slots:
     void colission();
     void cambioEscena();
 
+    void on_progressBar_valueChanged(int value);
+    void on_progressBar_Puntuacion_valueChanged(int value);
 };
 #endif // MAINWINDOW_H
 
