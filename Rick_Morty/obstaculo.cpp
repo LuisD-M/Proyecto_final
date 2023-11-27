@@ -17,7 +17,7 @@ Obstaculo::~Obstaculo()
     delete pixmap;
 }
 
-void Obstacle::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+void Obstaculo::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     float scaledHeight = this->getWidth()*2;
 
