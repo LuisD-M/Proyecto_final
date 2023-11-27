@@ -104,8 +104,11 @@ void *Obstaculo::qt_metacast(const char *_clname)
     if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_CLASSObstaculoENDCLASS.stringdata0))
         return static_cast<void*>(this);
+<<<<<<< HEAD
     if (!strcmp(_clname, "QGraphicsItem"))
         return static_cast< QGraphicsItem*>(this);
+=======
+>>>>>>> 99ad4aef0c33bab9fe1f3ae70f24bbe03a510bec
     return QObject::qt_metacast(_clname);
 }
 
