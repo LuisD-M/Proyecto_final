@@ -6,13 +6,6 @@ enemy1::enemy1(QObject *parent) : QObject{parent}
     pixmap1_2 = nullptr;                     // inicializar puntero de QPixmap
 }
 
-enemy1::enemy1(int x, int y)
-{
-    posx = x;
-    posy = y;
-    setPos(posx,posy);
-}
-
 enemy1::~enemy1()
 {
     delete pixmap1_2;
@@ -46,22 +39,6 @@ void enemy1::moveBy(heroe *heroeptr)
     // Actualiza la posición del enemigo en la escena
 
     setPos(x() + velocidad * cos(angle) , y() + velocidad * sin(angle));
-}
-
-int enemy1::getPosx() const{
-    return posx;
-}
-
-void enemy1::setPosx(int px){
-    posx = px;
-}
-
-int enemy1::getPosy() const{
-    return posy;
-}
-
-void enemy1::setPosy(int py){
-    posy=py;
 }
 
 QPointF enemy1::getPos() const
