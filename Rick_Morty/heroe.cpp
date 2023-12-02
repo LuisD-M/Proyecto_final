@@ -5,17 +5,14 @@ heroe::heroe(QObject *parent) : QObject{parent}
 {
     pixmap1 = new QPixmap(":/Imagenes/Rick.png");                     // inicializar puntero de QPixmap
 
+    setScale(0.20);
 
+    vely = 0;
+    velx = 0;
     ancho = 159;                                                    //dimensiones imagen
     alto = 315;
 }
 
-heroe::heroe(int x, int y)
-{
-    posx = x;
-    posy = y;
-    setPos(posx,posy);                                          // establecer la posicion del sprite en la escena
-}
 
 QRectF heroe::boundingRect() const
 {
@@ -25,31 +22,12 @@ QRectF heroe::boundingRect() const
 void heroe::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     painter->drawPixmap(-ancho/2, -alto/2,*pixmap1,0,0,ancho,alto);
-    setScale(0.20);
 }
 
 void heroe::moveBy(int x, int y)
 {
-    posy +=y;
-    posx +=x;
 
-    setPos(posx,posy);
-}
-
-int heroe::getPosx() const{
-    return posx;
-}
-
-void heroe::setPosx(int px){
-    posx = px;
-}
-
-int heroe::getPosy() const{
-    return posy;
-}
-
-void heroe::setPosy(int py){
-    posy=py;
+    setPos(this->x()+x,this->y()+y);
 }
 
 QPointF heroe::getPos() const
@@ -57,6 +35,44 @@ QPointF heroe::getPos() const
     return mapToScene(0,0);
 }
 
+void heroe::smallRect()
+{
+    if (small) return;
+    this->setScale(scale2);
+    this->setPos(this->x(),this->y()+(this->boundingRect().height()*scale1 - this->boundingRect().height()*scale2));
 
+    small = true;
+}
+void heroe::bigRect()
+{
+    if (!small) return;
+    this->setScale(scale1);
+    this->setPos(this->x(),this->y()-(this->boundingRect().height()*scale1 - this->boundingRect().height()*scale2));
+    small = false;
+}
 
+void heroe::jump(float vely)
+{
+    if (!jumped)
+    {
+        this->vely = vely;
+        jumped = true;
+    }
+}
 
+void heroe::acelerateBy(float x, int sceneHeight)
+{
+    if (this->y()+this->boundingRect().height()*this->scale() < sceneHeight || vely < 0)
+    {
+        vely += 0.22;
+        setPos(this->x()+x,this->y()+vely);
+    }else
+    {
+        jumped = false;
+    }
+}
+
+void heroe::setLevel3Scale()
+{
+    this->setScale(scale1);
+}

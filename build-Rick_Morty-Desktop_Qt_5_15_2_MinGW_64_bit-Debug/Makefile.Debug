@@ -150,6 +150,8 @@ debug/qrc_imagenes.cpp: ../Rick_Morty/imagenes.qrc \
 		../Rick_Morty/Imagenes/Escolta.jpg \
 		../Rick_Morty/Imagenes/Bloque1.png \
 		../Rick_Morty/Imagenes/Fondo1.jpg \
+		../Rick_Morty/Imagenes/Fondo3.png \
+		../Rick_Morty/Imagenes/escombro.png \
 		../Rick_Morty/Imagenes/Morty.png \
 		../Rick_Morty/Imagenes/Marciano.png
 	C:\Qt\5.15.2\mingw81_64\bin\rcc.exe -name imagenes ..\Rick_Morty\imagenes.qrc -o debug\qrc_imagenes.cpp
@@ -794,6 +796,7 @@ debug/moc_mainwindow.cpp: ../Rick_Morty/mainwindow.h \
 		../Rick_Morty/mainwindow.h \
 		../Rick_Morty/heroe2.h \
 		../Rick_Morty/muros.h \
+		../Rick_Morty/obstaculo.h \
 		debug/moc_predefs.h \
 		C:/Qt/5.15.2/mingw81_64/bin/moc.exe
 	C:\Qt\5.15.2\mingw81_64\bin\moc.exe $(DEFINES) --include "C:/Users/luis/Desktop/Universidad/NIVEL 9/Informatica 2/Juego/build-Rick_Morty-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/debug/moc_predefs.h" -IC:/Qt/5.15.2/mingw81_64/mkspecs/win32-g++ -I"C:/Users/luis/Desktop/Universidad/NIVEL 9/Informatica 2/Juego/Rick_Morty" -IC:/Qt/5.15.2/mingw81_64/include -IC:/Qt/5.15.2/mingw81_64/include/QtWidgets -IC:/Qt/5.15.2/mingw81_64/include/QtGui -IC:/Qt/5.15.2/mingw81_64/include/QtANGLE -IC:/Qt/5.15.2/mingw81_64/include/QtCore -I. -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include ..\Rick_Morty\mainwindow.h -o debug\moc_mainwindow.cpp
@@ -906,6 +909,7 @@ debug/moc_obstaculo.cpp: ../Rick_Morty/obstaculo.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QGraphicsRectItem \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qgraphicsitem.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qpainterpath.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QGraphicsPixmapItem \
 		debug/moc_predefs.h \
 		C:/Qt/5.15.2/mingw81_64/bin/moc.exe
 	C:\Qt\5.15.2\mingw81_64\bin\moc.exe $(DEFINES) --include "C:/Users/luis/Desktop/Universidad/NIVEL 9/Informatica 2/Juego/build-Rick_Morty-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/debug/moc_predefs.h" -IC:/Qt/5.15.2/mingw81_64/mkspecs/win32-g++ -I"C:/Users/luis/Desktop/Universidad/NIVEL 9/Informatica 2/Juego/Rick_Morty" -IC:/Qt/5.15.2/mingw81_64/include -IC:/Qt/5.15.2/mingw81_64/include/QtWidgets -IC:/Qt/5.15.2/mingw81_64/include/QtGui -IC:/Qt/5.15.2/mingw81_64/include/QtANGLE -IC:/Qt/5.15.2/mingw81_64/include/QtCore -I. -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include ..\Rick_Morty\obstaculo.h -o debug\moc_obstaculo.cpp
@@ -1057,6 +1061,7 @@ debug/moc_start.cpp: ../Rick_Morty/start.h \
 		../Rick_Morty/start.h \
 		../Rick_Morty/heroe2.h \
 		../Rick_Morty/muros.h \
+		../Rick_Morty/obstaculo.h \
 		debug/moc_predefs.h \
 		C:/Qt/5.15.2/mingw81_64/bin/moc.exe
 	C:\Qt\5.15.2\mingw81_64\bin\moc.exe $(DEFINES) --include "C:/Users/luis/Desktop/Universidad/NIVEL 9/Informatica 2/Juego/build-Rick_Morty-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/debug/moc_predefs.h" -IC:/Qt/5.15.2/mingw81_64/mkspecs/win32-g++ -I"C:/Users/luis/Desktop/Universidad/NIVEL 9/Informatica 2/Juego/Rick_Morty" -IC:/Qt/5.15.2/mingw81_64/include -IC:/Qt/5.15.2/mingw81_64/include/QtWidgets -IC:/Qt/5.15.2/mingw81_64/include/QtGui -IC:/Qt/5.15.2/mingw81_64/include/QtANGLE -IC:/Qt/5.15.2/mingw81_64/include/QtCore -I. -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include ..\Rick_Morty\start.h -o debug\moc_start.cpp
@@ -1712,6 +1717,7 @@ debug/main.o: ../Rick_Morty/main.cpp ../Rick_Morty/mainwindow.h \
 		../Rick_Morty/start.h \
 		../Rick_Morty/heroe2.h \
 		../Rick_Morty/muros.h \
+		../Rick_Morty/obstaculo.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QApplication \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qapplication.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qcoreapplication.h \
@@ -1867,26 +1873,8 @@ debug/mainwindow.o: ../Rick_Morty/mainwindow.cpp ../Rick_Morty/mainwindow.h \
 		../Rick_Morty/start.h \
 		../Rick_Morty/heroe2.h \
 		../Rick_Morty/muros.h \
+		../Rick_Morty/obstaculo.h \
 		ui_mainwindow.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/QVariant \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QApplication \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qapplication.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/qcoreapplication.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/qeventloop.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdesktopwidget.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtGui/qguiapplication.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtGui/qinputmethod.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLabel \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlabel.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QMenuBar \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qmenubar.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qmenu.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qaction.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qactiongroup.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QProgressBar \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qprogressbar.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QStatusBar \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qstatusbar.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/QString
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\mainwindow.o ..\Rick_Morty\mainwindow.cpp
 
@@ -2097,7 +2085,8 @@ debug/obstaculo.o: ../Rick_Morty/obstaculo.cpp ../Rick_Morty/obstaculo.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtouchdevice.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QGraphicsRectItem \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qgraphicsitem.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtGui/qpainterpath.h
+		C:/Qt/5.15.2/mingw81_64/include/QtGui/qpainterpath.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QGraphicsPixmapItem
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\obstaculo.o ..\Rick_Morty\obstaculo.cpp
 
 debug/start.o: ../Rick_Morty/start.cpp ../Rick_Morty/start.h \
@@ -2246,25 +2235,8 @@ debug/start.o: ../Rick_Morty/start.cpp ../Rick_Morty/start.h \
 		../Rick_Morty/enemy1.h \
 		../Rick_Morty/heroe2.h \
 		../Rick_Morty/muros.h \
-		ui_start.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/QVariant \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QApplication \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qapplication.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/qcoreapplication.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtCore/qeventloop.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdesktopwidget.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtGui/qguiapplication.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtGui/qinputmethod.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QMenuBar \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qmenubar.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qmenu.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qaction.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qactiongroup.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QPushButton \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qpushbutton.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QStatusBar \
-		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qstatusbar.h
+		../Rick_Morty/obstaculo.h \
+		ui_start.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\start.o ..\Rick_Morty\start.cpp
 
 debug/qrc_imagenes.o: debug/qrc_imagenes.cpp 
