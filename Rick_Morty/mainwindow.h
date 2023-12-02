@@ -23,13 +23,19 @@
 #include <QGraphicsEllipseItem>
 #include <QFont>
 #include <QGraphicsTextItem>
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <string>
 
 #include <heroe.h>
 #include <balas.h>
 #include <enemy1.h>
 #include <start.h>
 #include <heroe2.h>
+#include <muros.h>
 
+using namespace std;
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -60,9 +66,8 @@ private:
     QTimer *timerbalas;
     heroe *personaje;
     enemy1 *villano;
-    //puntaje *puntos;
 
-    //vida *vidas;
+    QList<muros *> muro;
 
     std::list<balas*> allyBullets;
     std::list<balas*> enemyBullets;

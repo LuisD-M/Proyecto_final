@@ -4,6 +4,7 @@ release/heroe.o
 release/heroe2.o
 release/main.o
 release/mainwindow.o
+release/muros.o
 release/obstaculo.o
 release/start.o
 release/qrc_imagenes.o

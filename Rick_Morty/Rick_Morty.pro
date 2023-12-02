@@ -15,6 +15,7 @@ SOURCES += \
     heroe2.cpp \
     main.cpp \
     mainwindow.cpp \
+    muros.cpp \
     obstaculo.cpp \
     start.cpp
 
@@ -24,6 +25,7 @@ HEADERS += \
     heroe.h \
     heroe2.h \
     mainwindow.h \
+    muros.h \
     obstaculo.h \
     start.h
 

@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QGraphicsView>
+#include <QString>
+
 
 
 MainWindow::MainWindow(QWidget *parent, int dificultad, short selheroe) : QMainWindow(parent), ui(new Ui::MainWindow)
@@ -64,6 +66,28 @@ MainWindow::MainWindow(QWidget *parent, int dificultad, short selheroe) : QMainW
 
     puntos = 0;
     on_progressBar_Puntuacion_valueChanged(puntos);
+
+    int wi, hi, xi, yi;        //leen los parametros dde cada bloque
+    string linea;
+
+    ifstream archivo("muros.txt");
+
+    while (getline(archivo, linea)) {
+        stringstream ss(linea);
+        string valor;
+
+        if (getline(ss, valor, ',')) wi = stoi(valor);
+        if (getline(ss, valor, ',')) hi = stoi(valor);
+        if (getline(ss, valor, ',')) xi = stoi(valor);
+        if (getline(ss, valor, ',')) yi = stoi(valor);
+
+        muro.push_back(new muros(wi,hi,xi,yi));
+        scene1->addItem(muro.back());
+    }
+    archivo.close();
+
+
+
 
 }
 
