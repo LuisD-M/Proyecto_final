@@ -25,6 +25,15 @@ balas::balas(const QPointF &mousePos, const QPointF &heroePos)
 
 }
 
+balas::balas(int velx, int vely, int width, int height, int posx, int posy, bool probability): ancho(width), alto(height), circular(probability)
+{
+    elip = new QGraphicsEllipseItem(0,0,width,height);
+    elip->setPos(posx,posy);
+    this->velx = velx;
+    this->vely = vely;
+    balasAmarillas();
+}
+
 QPointF balas::getPos() const
 {
     return elip->scenePos();
@@ -69,7 +78,16 @@ void balas::moveBy(int x, int y)
 
 void balas::move()
 {
-    elip->setPos(elip->x()+velx,elip->y()+vely);
+    if (circular)
+    {
+        t += 0.1;
+        cirx+=3;
+        int y = 450;
+        elip->setPos(cirx+50*cos(t),y+50*sin(t));
+    }else
+    {
+        elip->setPos(elip->x()+velx,elip->y()+vely);
+    }
 }
 
 int balas::getVelx() const

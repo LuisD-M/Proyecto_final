@@ -20,9 +20,13 @@ MainWindow::MainWindow(QWidget *parent, int dificultad, short selheroe) : QMainW
     QBrush BrochaF1(fondo1);
     ui->graphicsView->setBackgroundBrush(BrochaF1);    //Pinta el fondo del nivel 1 y se escala
 
-    scene1->setSceneRect(0,0,1080,599);
-    scene2->setSceneRect(0,0,1080,599);
-    scene3->setSceneRect(0,0,1080,599);
+    scene1->setSceneRect(ui->graphicsView->contentsRect());
+    scene2->setSceneRect(ui->graphicsView->contentsRect());
+    scene3->setSceneRect(ui->graphicsView->contentsRect());
+
+    scenes[0] = scene1;
+    scenes[1] = scene2;
+    scenes[2] = scene3;
 
 
     if(selheroe==1)
@@ -43,13 +47,18 @@ MainWindow::MainWindow(QWidget *parent, int dificultad, short selheroe) : QMainW
         colission();
         setFocus();
         cambioEscena();
+        movimientoPersonaje();
+        obstacleMove();
     });                                                         //Conecta el temporizador para mover balas
     timer->start(11);                                                             // 16
 
+    timerObstaculos = new QTimer();
+    connect(timerObstaculos, SIGNAL(timeout()), this, SLOT(generateObstacles()));
+    timerObstaculos->start(1200);
 
     timerbalas = new QTimer(this);
     connect(timerbalas, SIGNAL(timeout()), this, SLOT(enemyBulletGeneration()));
-    timerbalas->start(dificultad);
+    timerbalas->start(500); // dificultad
 
     enemyTimer = new QTimer(this);
     connect(enemyTimer, SIGNAL(timeout()), this, SLOT(enemyGeneration()));
@@ -69,36 +78,34 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::keyPressEvent(QKeyEvent *event)
+void MainWindow::movimientoPersonajeEscena1y2()
 {
-    keysPressed.insert(event->key());
-    switch (escena) {
-    case 1:
-    {
-        int step=5;                                         //Velocidad personaje
+    int step=2;                                         //Velocidad personaje
 
-        if (keysPressed.contains(Qt::Key_A) && keysPressed.contains(Qt::Key_W)){
-            personaje->moveBy(-step, -step);
-            personaje->setRotation(-45);
+    if (keysPressed.contains(Qt::Key_A) && keysPressed.contains(Qt::Key_W)){
+        personaje->moveBy(-step, -step);
+        personaje->setRotation(-45);
 
-        }
-        else if (keysPressed.contains(Qt::Key_A) && keysPressed.contains(Qt::Key_S)){
-            personaje->moveBy(-step, step);
-            personaje->setRotation(225);
+    }
+    else if (keysPressed.contains(Qt::Key_A) && keysPressed.contains(Qt::Key_S)){
+        personaje->moveBy(-step, step);
+        personaje->setRotation(225);
 
-        }
-        else if (keysPressed.contains(Qt::Key_D) && keysPressed.contains(Qt::Key_W)){
-            personaje->moveBy(step, -step);
-            personaje->setRotation(45);
+    }
+    else if (keysPressed.contains(Qt::Key_D) && keysPressed.contains(Qt::Key_W)){
+        personaje->moveBy(step, -step);
+        personaje->setRotation(45);
 
-        }
-        else if (keysPressed.contains(Qt::Key_D) && keysPressed.contains(Qt::Key_S)){
-            personaje->moveBy(step, step);
-            personaje->setRotation(135);
+    }
+    else if (keysPressed.contains(Qt::Key_D) && keysPressed.contains(Qt::Key_S)){
+        personaje->moveBy(step, step);
+        personaje->setRotation(135);
 
-        }
-        else {
-            switch (event->key())
+    }
+    else {
+        if (keysPressed.begin() != keysPressed.end())
+        {
+            switch (*keysPressed.begin())
             {
             case Qt::Key_A:
                 personaje->moveBy(-step, 0);
@@ -121,66 +128,90 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
                 break;
             }
         }
+    }
+}
+
+void MainWindow::movimientoPersonajeEscena3()
+{
+    int jumpvel = -8;
+    int slow = 2;
+    int step = 3;
+    personaje->acelerateBy(0,scene1->sceneRect().height());
+    if (keysPressed.contains(Qt::Key_A) && keysPressed.contains(Qt::Key_W))
+    {
+        personaje->moveBy(-step, 0);
+        personaje->jump(jumpvel);
+    } else if (keysPressed.contains(Qt::Key_A) && keysPressed.contains(Qt::Key_S))
+    {
+        personaje->moveBy(-step, 0);
+        personaje->smallRect();
+    } else if (keysPressed.contains(Qt::Key_D) && keysPressed.contains(Qt::Key_W))
+    {
+        personaje->moveBy(step-slow, 0);
+        personaje->jump(jumpvel);
+    } else if (keysPressed.contains(Qt::Key_D) && keysPressed.contains(Qt::Key_S))
+    {
+        personaje->moveBy(step-slow, 0);
+        personaje->smallRect();
+    }else if (keysPressed.contains(Qt::Key_W) && keysPressed.contains(Qt::Key_S))
+    {
+        personaje->jump(jumpvel);
+        personaje->smallRect();
+    }else {
+        if (keysPressed.begin() != keysPressed.end())
+        {
+            switch (*keysPressed.begin())
+            {
+            case Qt::Key_A:
+                personaje->moveBy(-step, 0);
+                break;
+            case Qt::Key_D:
+                personaje->moveBy(step-slow, 0);
+                break;
+            case Qt::Key_W:
+                personaje->jump(jumpvel);
+                break;
+            case Qt::Key_S:
+                personaje->smallRect();
+                break;
+            default:
+                break;
+            }
+        }
+    }
+    if (!keysPressed.contains(Qt::Key_S))
+    {
+        personaje->bigRect();
+    }
+}
+
+void MainWindow::movimientoPersonaje()
+{
+    switch (escena) {
+    case 1:
+    {
+        movimientoPersonajeEscena1y2();
         break;
     }
     case 2:
     {
-        int step=5;                                         //Velocidad personaje
-
-        if (keysPressed.contains(Qt::Key_A) && keysPressed.contains(Qt::Key_W)){
-            personaje->moveBy(-step, -step);
-            personaje->setRotation(-45);
-
-        }
-        else if (keysPressed.contains(Qt::Key_A) && keysPressed.contains(Qt::Key_S)){
-            personaje->moveBy(-step, step);
-            personaje->setRotation(225);
-
-        }
-        else if (keysPressed.contains(Qt::Key_D) && keysPressed.contains(Qt::Key_W)){
-            personaje->moveBy(step, -step);
-            personaje->setRotation(45);
-
-        }
-        else if (keysPressed.contains(Qt::Key_D) && keysPressed.contains(Qt::Key_S)){
-            personaje->moveBy(step, step);
-            personaje->setRotation(135);
-
-        }
-        else {
-            switch (event->key())
-            {
-            case Qt::Key_A:
-                personaje->moveBy(-step, 0);
-                personaje->setRotation(0);
-                break;
-            case Qt::Key_D:
-                personaje->moveBy(step, 0);
-                personaje->setRotation(0);
-                break;
-            case Qt::Key_W:
-                personaje->moveBy(0, -step);
-                personaje->setRotation(-90);
-                break;
-            case Qt::Key_S:
-                personaje->moveBy(0, step);
-                personaje->setRotation(90);
-                break;
-            default:
-                break;
-            }
-        }
+        movimientoPersonajeEscena1y2();
         break;
     }
     case 3:
     {
+        movimientoPersonajeEscena3();
         break;
     }
     default:
         qDebug() << "ERROR: la escena no existe";
         break;
     }
+}
 
+void MainWindow::keyPressEvent(QKeyEvent *event)
+{
+    keysPressed.insert(event->key());
 }
 
 void MainWindow::keyReleaseEvent(QKeyEvent* event)
@@ -188,34 +219,86 @@ void MainWindow::keyReleaseEvent(QKeyEvent* event)
     keysPressed.remove(event->key());
 }
 
+void MainWindow::disparoEscena1y2(QPointF mousePos,int escena)
+{
+    balas *bala = new balas(mousePos, personaje->getPos());                //crea nueva bala desde la posicion del heroe
+    bala->balasAzules();
+    scenes[escena]->addItem(bala->getElip());
+    allyBullets.push_front(bala);
+}
+
 void MainWindow::mousePressEvent(QMouseEvent *event)
 {
+    QPointF mousePos = ui->graphicsView->mapToScene(event->pos());
     switch (escena) {
     case 1:
     {
-        QPointF mousePos = ui->graphicsView->mapToScene(event->pos());         //
-        balas *bala = new balas(mousePos, personaje->getPos());                //crea nueva bala desde la posicion del heroe
-        bala->balasAzules();
-        scene1->addItem(bala->getElip());
-        allyBullets.push_front(bala);
+        disparoEscena1y2(mousePos, 0);
         break;
     }
     case 2:
     {
-        QPointF mousePos = ui->graphicsView->mapToScene(event->pos());         //
-        balas *bala = new balas(mousePos, personaje->getPos());                //crea nueva bala desde la posicion del heroe
-        bala->balasAzules();
-        scene2->addItem(bala->getElip());
-        allyBullets.push_front(bala);
+        disparoEscena1y2(mousePos, 1);
         break;
     }
     case 3:
     {
-
+        return;
         break;
     }
     default:
         break;
+    }
+}
+
+void MainWindow::movimientoBalaEscena1y2(int escena)
+{
+    for (auto it = allyBullets.begin(); it != allyBullets.end();)
+    {
+        balas *bala = *it;
+        bala->move();
+        if (bala->getX() > scenes[escena]->width() || bala->getX() < 0-bala->getWidth() || bala->getY() > scenes[escena]->height() || bala->getY() < 0-bala->getHeight())
+        {
+            scenes[escena]->removeItem(bala->getElip());
+            it = allyBullets.erase(it);
+            delete bala;
+        }else
+        {
+            it++;
+        }
+    }
+
+    for (auto it = enemyBullets.begin(); it != enemyBullets.end();)
+    {
+        balas *bala = *it;
+        bala->move();
+        if (bala->getX() > scenes[escena]->width() || bala->getX() < 0 - bala->getWidth() || bala->getY() > scenes[escena]->height() || bala->getY() < 0-bala->getHeight())
+        {
+            scenes[escena]->removeItem(bala->getElip());
+            it = enemyBullets.erase(it);
+            delete bala;
+        }else
+        {
+            it++;
+        }
+    }
+}
+
+void MainWindow::movimientoBalaEscena3()
+{
+    for (auto it = enemyBullets.begin(); it != enemyBullets.end();)
+    {
+        balas *bullet = *it;
+        bullet->move();
+        if (bullet->getX() > scene3->width())
+        {
+            scene3->removeItem(bullet->getElip());
+            it = enemyBullets.erase(it);
+            delete bullet;
+        }else
+        {
+            it++;
+        }
     }
 }
 
@@ -224,72 +307,17 @@ void MainWindow::bulletMove()
     switch (escena) {
     case 1:
     {
-        for (auto it = allyBullets.begin(); it != allyBullets.end();)
-        {
-            balas *bala = *it;
-            bala->move();
-            if (bala->getX() > scene1->width() || bala->getX() < 0-bala->getWidth() || bala->getY() > scene1->height() || bala->getY() < 0-bala->getHeight())
-            {
-                scene1->removeItem(bala->getElip());
-                it = allyBullets.erase(it);
-                delete bala;
-            }else
-            {
-                it++;
-            }
-        }
-
-        for (auto it = enemyBullets.begin(); it != enemyBullets.end();)
-        {
-            balas *bala = *it;
-            bala->move();
-            if (bala->getX() > scene1->width() || bala->getX() < 0 - bala->getWidth() || bala->getY() > scene1->height() || bala->getY() < 0-bala->getHeight())
-            {
-                scene1->removeItem(bala->getElip());
-                it = enemyBullets.erase(it);
-                delete bala;
-            }else
-            {
-                it++;
-            }
-        }
+        movimientoBalaEscena1y2(0);
         break;
     }
     case 2:
     {
-        for (auto it = allyBullets.begin(); it != allyBullets.end();)
-        {
-            balas *bala = *it;
-            bala->move();
-            if (bala->getX() > scene2->width() || bala->getX() < 0-bala->getWidth() || bala->getY() > scene2->height() || bala->getY() < 0-bala->getHeight())
-            {
-                scene2->removeItem(bala->getElip());
-                it = allyBullets.erase(it);
-                delete bala;
-            }else
-            {
-                it++;
-            }
-        }
-
-        for (auto it = enemyBullets.begin(); it != enemyBullets.end();)
-        {
-            balas *bala = *it;
-            bala->move();
-            if (bala->getX() > scene2->width() || bala->getX() < 0 - bala->getWidth() || bala->getY() > scene2->height() || bala->getY() < 0-bala->getHeight())
-            {
-                scene2->removeItem(bala->getElip());
-                it = enemyBullets.erase(it);
-                delete bala;
-            }else
-            {
-                it++;
-            }
-        }
+        movimientoBalaEscena1y2(1);
         break;
     }
     case 3:
     {
+        movimientoBalaEscena3();
         break;
     }
     default:
@@ -297,105 +325,106 @@ void MainWindow::bulletMove()
     }
 }
 
+void MainWindow::generacionEnemigosEscena1y2(int escena)
+{
+    int place = rand() % 4 + 1;
+    int posy, posx;
+    switch (place) {
+
+    case 1: // arriba
+    {
+        posy = 60;
+        posx = rand() % ((int)scenes[escena]->width()- 10 +1 ) + 10;
+        break;
+    }
+    case 2: // abajo
+    {
+        posy = 533;
+        posx = rand() % ((int)scenes[escena]->width()- 10 +1 ) + 10;
+        break;
+    }
+    case 3: // izquierda
+    {
+        posy = rand() % ((int)scenes[escena]->height() - 89) + 50;
+        posx = 20;
+
+        break;
+    }
+    case 4: // derecha
+    {
+        posy = rand() % ((int)scenes[escena]->height() - 89) + 50;
+        posx = 1050;
+        break;
+    }
+    default:
+    {
+        posx = scenes[escena]->width()/2;
+        posy = scenes[escena]->height()/2;
+        qDebug() << "Numero aleatorio generado no es el esperado";
+    }
+    break;
+    }
+    villano = new enemy1();                                    //
+    scenes[escena]->addItem(villano);
+    villano->setPos(posx,posy);
+    enemies.push_front(villano);
+}
+
 void MainWindow::enemyGeneration()
 {
     switch (escena) {
     case 1:
     {
-        int place = rand() % 4 + 1;
-        int posy, posx;
-        switch (place) {
-
-        case 1: // arriba
-        {
-            posy = 60;
-            posx = rand() % ((int)scene1->width()- 10 +1 ) + 10;
-            break;
-        }
-        case 2: // abajo
-        {
-            posy = 533;
-            posx = rand() % ((int)scene1->width()- 10 +1 ) + 10;
-            break;
-        }
-        case 3: // izquierda
-        {
-            posy = rand() % ((int)scene1->height() - 89) + 50;
-            posx = 20;
-
-            break;
-        }
-        case 4: // derecha
-        {
-            posy = rand() % ((int)scene1->height() - 89) + 50;
-            posx = 1050;
-            break;
-        }
-        default:
-        {
-            posx = scene1->width()/2;
-            posy = scene1->height()/2;
-            qDebug() << "Numero aleatorio generado no es el esperado";
-        }
-        break;
-        }
-        villano = new enemy1();                                    //
-        scene1->addItem(villano);
-        villano->setPos(posx,posy);
-        enemies.push_front(villano);
+        generacionEnemigosEscena1y2(0);
         break;
     }
     case 2:
     {
-        int place = rand() % 4 + 1;
-        int posy, posx;
-        switch (place) {
-
-        case 1: // arriba
-        {
-            posy = 60;
-            posx = rand() % ((int)scene2->width()- 10 +1 ) + 10;
-            break;
-        }
-        case 2: // abajo
-        {
-            posy = 533;
-            posx = rand() % ((int)scene2->width()- 10 +1 ) + 10;
-            break;
-        }
-        case 3: // izquierda
-        {
-            posy = rand() % ((int)scene2->height() - 89) + 50;
-            posx = 20;
-
-            break;
-        }
-        case 4: // derecha
-        {
-            posy = rand() % ((int)scene2->height() - 89) + 50;
-            posx = 1050;
-            break;
-        }
-        default:
-        {
-            posx = scene2->width()/2;
-            posy = scene2->height()/2;
-            qDebug() << "Numero aleatorio generado no es el esperado";
-        }
-        break;
-        }
-        villano = new enemy1();
-        scene2->addItem(villano);
-        villano->setPos(posx,posy);
-        enemies.push_front(villano);
-        break;
+        generacionEnemigosEscena1y2(1);
     }
     case 3:
     {
+        return;
         break;
     }
     default:
         break;
+    }
+}
+
+void MainWindow::generacionBalaEnemigaEscena1y2(int escena)
+{
+    for (auto villano: enemies)
+    {
+        int probability = rand()%11;
+        if (probability == 10)
+        {
+            balas *bala = new balas(personaje->getPos(), villano->getPos());
+            bala->balasAmarillas();
+            scenes[escena]->addItem(bala->getElip());
+
+            enemyBullets.push_front(bala);
+        }
+    }
+}
+
+void MainWindow::generacionBalaEnemigaEscena3()
+{
+    int probability = rand()%11;
+    int width = 10;
+    int height = 10;
+    int velx = 5;
+    int vely = 0;
+    if(probability == 10)
+    {
+        int probability = rand()%5;
+        bool circular = false;
+        if (probability == 0) circular = true;
+        balas *bullet = new balas(velx,vely,width,height,width,0,circular);
+        int posy = rand()%((int)scene3->height()/2-bullet->getHeight());
+        bullet->setY(posy+scene3->height()/2);
+        scene3->addItem(bullet->getElip());
+        enemyBullets.push_back(bullet);
     }
 }
 
@@ -404,42 +433,105 @@ void MainWindow::enemyBulletGeneration()
     switch (escena) {
     case 1:
     {
-        for (auto villano: enemies)
-        {
-            int probability = rand()%200;
-            if (probability == 10)
-            {
-                balas *bala = new balas(personaje->getPos(), villano->getPos());
-                bala->balasAmarillas();
-                scene1->addItem(bala->getElip());
-
-                enemyBullets.push_front(bala);
-            }
-        }
+        generacionBalaEnemigaEscena1y2(0);
         break;
     }
     case 2:
     {
-        for (auto villano: enemies)
-        {
-            int probability = rand()%200;
-            if (probability == 10)
-            {
-                balas *bala = new balas(personaje->getPos(), villano->getPos());
-                bala->balasAmarillas();
-                scene2->addItem(bala->getElip());
-
-                enemyBullets.push_front(bala);
-            }
-        }
+        generacionBalaEnemigaEscena1y2(1);
         break;
     }
     case 3:
     {
+        generacionBalaEnemigaEscena3();
         break;
     }
     default:
         break;
+    }
+}
+
+void MainWindow::colisionEscena1y2(int escena)
+{
+    for (auto itEnemy = enemies.begin(); itEnemy != enemies.end();){
+        bool erased = false;
+        for (auto itBullet = allyBullets.begin(); itBullet != allyBullets.end();){
+
+            if((*itEnemy)->collidesWithItem((*itBullet)->getElip())){
+
+                erased = true;
+
+                scenes[escena]->removeItem((*itBullet)->getElip());
+                scenes[escena]->removeItem((*itEnemy));
+
+                balas *bala = (*itBullet);
+                enemy1 *enemigo = (*itEnemy);
+
+                itEnemy = enemies.erase(itEnemy);
+                itBullet = allyBullets.erase(itBullet);
+                puntos->increaseN1();
+
+                delete (enemigo);
+                delete (bala);
+                break;
+            }else
+                itBullet++;
+
+        }
+        if (!erased) itEnemy++;
+    }
+
+    for(auto it = enemyBullets.begin(); it != enemyBullets.end();){
+        if(personaje -> collidesWithItem((*it)->getElip())){
+
+            scenes[escena]->removeItem((*it)->getElip());
+
+            balas *bala = (*it);
+
+            it = enemyBullets.erase(it);
+            vidas->lessVidaN1();
+
+            delete (bala);
+
+        }
+        else
+            it++;
+    }
+
+    if(vidas->getVidaN1()== 0){
+
+        eliminaItems(scenes[escena]);
+        perdiste(scenes[escena]);
+    }
+}
+
+void MainWindow::colisionEscena3()
+{
+    for (auto it = enemyBullets.begin(); it != enemyBullets.end();)
+    {
+        balas *bullet = *it;
+        if (personaje->collidesWithItem(bullet->getElip()))
+        {
+            scene3->removeItem(bullet->getElip());
+            it = enemyBullets.erase(it);
+            delete bullet;
+        }else
+        {
+            it++;
+        }
+    }
+    for (auto it = obstacles.begin(); it != obstacles.end();)
+    {
+        Obstaculo *obstacle = *it;
+        if (personaje->collidesWithItem(obstacle))
+        {
+            scene3->removeItem(obstacle);
+            it = obstacles.erase(it);
+            delete obstacle;
+        }else
+        {
+            it++;
+        }
     }
 }
 
@@ -448,120 +540,52 @@ void MainWindow::colission()
     switch (escena) {
     case 1:
     {
-        for (auto itEnemy = enemies.begin(); itEnemy != enemies.end();){
-            bool erased = false;
-            for (auto itBullet = allyBullets.begin(); itBullet != allyBullets.end();){
-
-                if((*itEnemy)->collidesWithItem((*itBullet)->getElip())){
-
-                    erased = true;
-
-                    scene1->removeItem((*itBullet)->getElip());
-                    scene1->removeItem((*itEnemy));
-
-                    balas *bala = (*itBullet);
-                    enemy1 *enemigo = (*itEnemy);
-
-                    itEnemy = enemies.erase(itEnemy);
-                    itBullet = allyBullets.erase(itBullet);
-                    puntos->increaseN1();
-
-                    delete (enemigo);
-                    delete (bala);
-                    break;
-                }else
-                    itBullet++;
-
-            }
-            if (!erased) itEnemy++;
-        }
-
-        for(auto it = enemyBullets.begin(); it != enemyBullets.end();){
-            if(personaje -> collidesWithItem((*it)->getElip())){
-
-                scene1->removeItem((*it)->getElip());
-
-                balas *bala = (*it);
-
-                it = enemyBullets.erase(it);
-                vidas->lessVidaN1();
-
-                delete (bala);
-
-            }
-            else
-                it++;
-        }
-
-        if(vidas->getVidaN1()== 0){
-
-            eliminaItems(scene1);
-            perdiste(scene1);
-        }
+        colisionEscena1y2(0);
         break;
     }
     case 2:
     {
-        for (auto itEnemy = enemies.begin(); itEnemy != enemies.end();){
-            bool erased = false;
-            for (auto itBullet = allyBullets.begin(); itBullet != allyBullets.end();){
-
-                if((*itEnemy)->collidesWithItem((*itBullet)->getElip())){
-
-                    erased = true;
-
-                    scene2->removeItem((*itBullet)->getElip());
-                    scene2->removeItem((*itEnemy));
-
-                    balas *bala = (*itBullet);
-                    enemy1 *enemigo = (*itEnemy);
-
-                    itEnemy = enemies.erase(itEnemy);
-                    itBullet = allyBullets.erase(itBullet);
-                    puntos->increaseN1();
-
-                    delete (enemigo);
-                    delete (bala);
-                    break;
-                }else
-                    itBullet++;
-
-            }
-            if (!erased) itEnemy++;
-        }
-
-        for(auto it = enemyBullets.begin(); it != enemyBullets.end();){
-            if(personaje -> collidesWithItem((*it)->getElip())){
-
-                scene2->removeItem((*it)->getElip());
-
-                balas *bala = (*it);
-
-                it = enemyBullets.erase(it);
-                vidas->lessVidaN1();
-
-                delete (bala);
-
-            }
-            else
-                it++;
-        }
-
-        if(vidas->getVidaN1()== 0){
-
-            eliminaItems(scene2);
-            perdiste(scene2);
-        }
+        colisionEscena1y2(1);
         break;
     }
     case 3:
     {
+        colisionEscena3();
         break;
     }
     default:
         break;
     }
 
+}
+
+void MainWindow::generateObstacles()
+{
+    if (escena == 3)
+    {
+        float scale = rand()%5+5;
+        Obstaculo *obstacle = new Obstaculo(scene3->sceneRect(), scale);
+        obstacles.push_front(obstacle);
+        scene3->addItem(obstacle);
+    }
+}
+
+void MainWindow::obstacleMove()
+{
+    for (auto it = obstacles.begin(); it != obstacles.end();)
+    {
+        Obstaculo *obstacle = *it;
+        obstacle->move();
+        if (obstacle->x() < 0 - obstacle->boundingRect().width())
+        {
+            scene3->removeItem(obstacle);
+            it = obstacles.erase(it);
+            delete obstacle;
+        }else
+        {
+            it++;
+        }
+    }
 }
 
 void MainWindow::eliminaItems(QGraphicsScene *scene)
@@ -596,8 +620,9 @@ void MainWindow::perdiste(QGraphicsScene *scene)
 void MainWindow::cambioEscena()
 {
     int vida = 5;
-    if (escena == 1 && puntos->getpuntaje() >= 10)
+    if (escena == 1 && puntos->getpuntaje() >= 1)
     {
+        escena = 2;
         eliminaItems(scene1);
 
         ui->graphicsView->setScene(scene2);
@@ -609,7 +634,7 @@ void MainWindow::cambioEscena()
 
         scene2->addItem(personaje);
         personaje->setPos(scene1->width()/2,scene1->height()/2);
-        escena = 2;
+
 
         scene2->addItem(puntos);
         puntos->setPos(0,0);
@@ -618,17 +643,21 @@ void MainWindow::cambioEscena()
 
         puntos->setPuntuacion(0);
         vidas->setVidaN1(vida);
-
-        qDebug() << enemies.size();
-    }else if(escena == 2 && puntos->getpuntaje() >= 10)
+    }else if(escena == 2 && puntos->getpuntaje() >= 1)
     {
+        escena = 3;
         eliminaItems(scene2);
 
         ui->graphicsView->setScene(scene3);
+
+        QImage fondo3(":/Imagenes/Fondo3.png");
+        QBrush BrochaF3(fondo3);
+
+        ui->graphicsView->setBackgroundBrush(BrochaF3);    //Pinta el fondo del nivel 2 y se escala
+        personaje->setRotation(0);
         vidas->setVidaN1(vida*2);
         scene3->addItem(personaje);
-        escena = 3;
-        escena = 2;                           //añade puntaje
+        personaje->setLevel3Scale();
         scene3->addItem(puntos);
         puntos->setPos(0,0);
         scene3->addItem(vidas);

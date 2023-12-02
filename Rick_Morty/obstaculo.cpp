@@ -1,67 +1,25 @@
 #include "obstaculo.h"
 
-Obstaculo::Obstaculo()
+Obstaculo::Obstaculo(const QRectF &sceneSize, const float scale, QGraphicsItem* im)
 {
-    pixmap = new QPixmap(":/Imagenes/escombro.png");
-}
-
-Obstaculo::Obstaculo(const QRectF &sceneSize,const int ancho, const int alto, QObject *parent): QObject{parent}
-{
-    pixmap = new QPixmap(":/Imagenes/escombro.png");
-    setRect(new QGraphicsRectItem(0,0,ancho,alto));
-    setPos(sceneSize.width(), sceneSize.height()-this->getHeight());
+    setPixmap(QPixmap(":/Imagenes/escombro.png"));
+    setScale(0.012*scale);
+    setPos(sceneSize.width(),sceneSize.height()-this->boundingRect().height()*this->scale());
 }
 
 Obstaculo::~Obstaculo()
 {
-    delete pixmap;
-}
 
-void Obstaculo::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
-{
-    float scaledHeight = this->getWidth()*2;
-
-    // Draw the scaled pixmap on the obstacle
-    painter->drawPixmap(this->getWidth, scaledHeight, *pixmap,0,0,);
 }
-
-int Obstaculo::getX() const
-{
-    return this->x();
-}
-//void Obstaculo::setX(int x)
-//{
-//    this->setX(x);
-//}
-//int Obstaculo::getY() const
-//{
-//    return this->y();
-//}
-//void Obstaculo::setY(int y)
-//{
-//    this->setY(y);
-//}
-//QPointF Obstaculo::getPos() const
-//{
-//    return this->scenePos();
-//}
-//void Obstaculo::setPos(QPointF pos)
-//{
-//    this->setPos(pos);
-//}
-//void Obstaculo::setPos(int x, int y)
-//{
-//    this->setPos(x,y);
-//}
 
 void Obstaculo::moveBy(int x, int y)
 {
-    this->setPos(this->x()+x,this->y()+y);
+    setPos(this->x()+x,this->y()+y);
 }
 
 void Obstaculo::move()
 {
-    this->setPos(this->x()-vel,this->y());
+    setPos(this->x()-vel,this->y());
 }
 
 //
@@ -70,15 +28,4 @@ void Obstaculo::move()
 int Obstaculo::getVel() const
 {
     return vel;
-}
-
-
-int Obstaculo::getWidth() const
-{
-    return this->getRect()->rect().width();
-}
-
-int Obstaculo::getHeight() const
-{
-    return this->getRect()->rect().height();
 }

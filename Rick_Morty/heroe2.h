@@ -7,6 +7,8 @@
 class heroe2 : public heroe                          //Se hereda de la clase heroe
 {
     Q_OBJECT
+private:
+
 
 public:
     explicit heroe2(QObject *parent = nullptr);

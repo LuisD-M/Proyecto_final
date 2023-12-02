@@ -12,6 +12,7 @@ public:
     // constructors
     balas();
     balas(int velx, int vely, QGraphicsEllipseItem* elip);
+    balas(int velx, int vely, int width, int height, int posx=0, int posy=0,bool probability=false);
     balas(const QPointF &mousePos, const QPointF &heroePos);
 
     ~balas();
@@ -46,6 +47,9 @@ private:
     int velx, vely;
     const int vel = 10, ancho = 10, alto = 10;
     QGraphicsEllipseItem *elip;
+    const bool circular = false;
+    float t = 0;
+    float cirx = 0;
 };
 
 #endif // BALAS_H
