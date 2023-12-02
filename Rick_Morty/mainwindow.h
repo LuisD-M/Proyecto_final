@@ -23,16 +23,20 @@
 #include <QGraphicsEllipseItem>
 #include <QFont>
 #include <QGraphicsTextItem>
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <string>
 
 #include <heroe.h>
 #include <balas.h>
 #include <enemy1.h>
-#include <puntaje.h>
-#include <vida.h>
 #include <start.h>
 #include <heroe2.h>
+#include <muros.h>
 #include <obstaculo.h>
 
+using namespace std;
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -64,8 +68,8 @@ private:
     QTimer *timerObstaculos;
     heroe *personaje;
     enemy1 *villano;
-    puntaje *puntos;
-    vida *vidas;
+
+    QList<muros *> muro;
 
     std::list<balas*> allyBullets;
     std::list<balas*> enemyBullets;
@@ -75,6 +79,10 @@ private:
     short escena;
     int dificultad;
     short selheroe;
+
+    int vidas;
+    int puntos;
+    bool running;
 
     void eliminaItems(QGraphicsScene *scene);
     void perdiste(QGraphicsScene *scene);
@@ -104,6 +112,8 @@ private slots:
     void cambioEscena();
     void movimientoPersonaje();
 
+    void on_progressBar_valueChanged(int value);
+    void on_progressBar_Puntuacion_valueChanged(int value);
 };
 #endif // MAINWINDOW_H
 

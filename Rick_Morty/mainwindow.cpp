@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QGraphicsView>
+#include <QString>
+
 
 
 MainWindow::MainWindow(QWidget *parent, int dificultad, short selheroe) : QMainWindow(parent), ui(new Ui::MainWindow)
@@ -64,13 +66,32 @@ MainWindow::MainWindow(QWidget *parent, int dificultad, short selheroe) : QMainW
     connect(enemyTimer, SIGNAL(timeout()), this, SLOT(enemyGeneration()));
     enemyTimer->start(2000);
 
-    puntos = new puntaje;                            //añade puntaje
-    scene1->addItem(puntos);
-    puntos->setPos(0,0);
+    vidas = 5;
+    on_progressBar_valueChanged(vidas);
 
-    vidas = new vida;
-    scene1->addItem(vidas);
-    vidas->setPos(1000,0);
+    puntos = 0;
+    on_progressBar_Puntuacion_valueChanged(puntos);
+
+    int wi, hi, xi, yi;        //leen los parametros dde cada bloque
+    string linea;
+
+    ifstream archivo("muros.txt");
+
+    while (getline(archivo, linea)) {
+        stringstream ss(linea);
+        string valor;
+
+        if (getline(ss, valor, ',')) wi = stoi(valor);
+        if (getline(ss, valor, ',')) hi = stoi(valor);
+        if (getline(ss, valor, ',')) xi = stoi(valor);
+        if (getline(ss, valor, ',')) yi = stoi(valor);
+
+        muro.push_back(new muros(wi,hi,xi,yi));
+        scene1->addItem(muro.back());
+    }
+    archivo.close();
+
+    running = true;
 }
 
 MainWindow::~MainWindow()
@@ -229,25 +250,28 @@ void MainWindow::disparoEscena1y2(QPointF mousePos,int escena)
 
 void MainWindow::mousePressEvent(QMouseEvent *event)
 {
-    QPointF mousePos = ui->graphicsView->mapToScene(event->pos());
-    switch (escena) {
-    case 1:
-    {
-        disparoEscena1y2(mousePos, 0);
-        break;
-    }
-    case 2:
-    {
-        disparoEscena1y2(mousePos, 1);
-        break;
-    }
-    case 3:
-    {
-        return;
-        break;
-    }
-    default:
-        break;
+    if(running){
+
+        QPointF mousePos = ui->graphicsView->mapToScene(event->pos());
+        switch (escena) {
+        case 1:
+        {
+            disparoEscena1y2(mousePos, 0);
+            break;
+        }
+        case 2:
+        {
+            disparoEscena1y2(mousePos, 1);
+            break;
+        }
+        case 3:
+        {
+            return;
+            break;
+        }
+        default:
+            break;
+        }
     }
 }
 
@@ -469,16 +493,19 @@ void MainWindow::colisionEscena1y2(int escena)
 
                 itEnemy = enemies.erase(itEnemy);
                 itBullet = allyBullets.erase(itBullet);
-                puntos->increaseN1();
+
+                puntos++;
+                on_progressBar_Puntuacion_valueChanged(puntos);
 
                 delete (enemigo);
                 delete (bala);
                 break;
+
             }else
                 itBullet++;
-
         }
         if (!erased) itEnemy++;
+
     }
 
     for(auto it = enemyBullets.begin(); it != enemyBullets.end();){
@@ -487,21 +514,19 @@ void MainWindow::colisionEscena1y2(int escena)
             scenes[escena]->removeItem((*it)->getElip());
 
             balas *bala = (*it);
-
             it = enemyBullets.erase(it);
-            vidas->lessVidaN1();
+
+            vidas--;
+            on_progressBar_valueChanged(vidas);
 
             delete (bala);
-
         }
         else
             it++;
     }
-
-    if(vidas->getVidaN1()== 0){
-
-        eliminaItems(scenes[escena]);
-        perdiste(scenes[escena]);
+    if(vidas <= 0){
+            eliminaItems(scenes[escena]);
+            perdiste(scenes[escena]);
     }
 }
 
@@ -514,6 +539,10 @@ void MainWindow::colisionEscena3()
         {
             scene3->removeItem(bullet->getElip());
             it = enemyBullets.erase(it);
+
+            vidas--;
+            on_progressBar_valueChanged(vidas);
+
             delete bullet;
         }else
         {
@@ -527,11 +556,20 @@ void MainWindow::colisionEscena3()
         {
             scene3->removeItem(obstacle);
             it = obstacles.erase(it);
+
+            vidas--;
+            on_progressBar_valueChanged(vidas);
+
             delete obstacle;
         }else
         {
             it++;
         }
+    }
+
+    if(vidas <= 0){
+        eliminaItems(scene3);
+        perdiste(scene3);
     }
 }
 
@@ -579,7 +617,7 @@ void MainWindow::obstacleMove()
         if (obstacle->x() < 0 - obstacle->boundingRect().width())
         {
             scene3->removeItem(obstacle);
-            it = obstacles.erase(it);
+            it = obstacles.erase(it);            
             delete obstacle;
         }else
         {
@@ -603,8 +641,26 @@ void MainWindow::eliminaItems(QGraphicsScene *scene)
         delete bullet;
     }
     enemyBullets.clear();
-    scene->removeItem(vidas);
-    scene->removeItem(puntos);
+
+    for (auto obstacle : obstacles) {
+        scene->removeItem(obstacle);
+        delete obstacle;
+    }
+    obstacles.clear();
+
+    for (auto bullet : allyBullets) {
+        scene->removeItem(bullet->getElip());
+        delete bullet;
+    }
+    allyBullets.clear();
+
+    (*timer).stop();
+    (*timerbalas).stop();
+    (*timerObstaculos).stop();
+    (*enemyTimer).stop();
+
+    running = false;
+
 }
 
 void MainWindow::perdiste(QGraphicsScene *scene)
@@ -619,8 +675,8 @@ void MainWindow::perdiste(QGraphicsScene *scene)
 
 void MainWindow::cambioEscena()
 {
-    int vida = 5;
-    if (escena == 1 && puntos->getpuntaje() >= 1)
+
+    if (escena == 1 && puntos >= 1)
     {
         escena = 2;
         eliminaItems(scene1);
@@ -635,15 +691,14 @@ void MainWindow::cambioEscena()
         scene2->addItem(personaje);
         personaje->setPos(scene1->width()/2,scene1->height()/2);
 
+        puntos = 0;
+        on_progressBar_Puntuacion_valueChanged(puntos);
 
-        scene2->addItem(puntos);
-        puntos->setPos(0,0);
-        scene2->addItem(vidas);
-        vidas->setPos(1000,0);
+        vidas = 5;
+        on_progressBar_valueChanged(vidas);
 
-        puntos->setPuntuacion(0);
-        vidas->setVidaN1(vida);
-    }else if(escena == 2 && puntos->getpuntaje() >= 1)
+
+    }else if(escena == 2 && puntos >= 1)
     {
         escena = 3;
         eliminaItems(scene2);
@@ -655,12 +710,30 @@ void MainWindow::cambioEscena()
 
         ui->graphicsView->setBackgroundBrush(BrochaF3);    //Pinta el fondo del nivel 2 y se escala
         personaje->setRotation(0);
-        vidas->setVidaN1(vida*2);
+
         scene3->addItem(personaje);
         personaje->setLevel3Scale();
-        scene3->addItem(puntos);
-        puntos->setPos(0,0);
-        scene3->addItem(vidas);
-        vidas->setPos(1000,0);
+
+        vidas = 5;
+        on_progressBar_valueChanged(vidas);
+
+        puntos = 0;
+        on_progressBar_Puntuacion_valueChanged(puntos);
+
     }
 }
+
+void MainWindow::on_progressBar_valueChanged(int value)
+{
+    ui->progressBar->setValue(value);
+    ui->progressBar->setStyleSheet(ui->progressBar->property("defaultStyleSheet").toString() +
+        " QProgressBar::chunk { background: red; }");
+}
+
+void MainWindow::on_progressBar_Puntuacion_valueChanged(int Pun)
+{
+    ui->progressBar_Puntuacion->setValue(Pun);
+    ui->progressBar_Puntuacion->setStyleSheet(ui->progressBar->property("defaultStyleSheet").toString() +
+         " QProgressBar::chunk { background: yellow; }");
+}
+
