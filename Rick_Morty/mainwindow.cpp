@@ -52,11 +52,6 @@ MainWindow::MainWindow(QWidget *parent, int dificultad, short selheroe) : QMainW
     });                                                         //Conecta el temporizador para mover balas
     timer->start(11);                                                             // 16
 
-    timermove = new QTimer();
-    //connect(timermove, SIGNAL(timeout()), this, SLOT(update()));
-    timermove->start(500);
-
-
     timerObstaculos = new QTimer();
     connect(timerObstaculos, SIGNAL(timeout()), this, SLOT(generateObstacles()));
     timerObstaculos->start(1200);
@@ -383,20 +378,6 @@ void MainWindow::generacionEnemigosEscena1y2(int escena)
             qDebug() << "Numero aleatorio generado no es el esperado";
         }
         break;
-    }
-    case 4: // derecha
-    {
-        posy = rand() % ((int)scenes[escena]->height() - 89) + 50;
-        posx = 1050;
-        break;
-    }
-    default:
-    {
-        posx = scenes[escena]->width()/2;
-        posy = scenes[escena]->height()/2;
-        qDebug() << "Numero aleatorio generado no es el esperado";
-    }
-    break;
     }
     enemy1 *villano;
     if (escena == 0)
