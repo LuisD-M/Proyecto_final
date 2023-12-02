@@ -1,9 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QGraphicsView>
-#include <QString>
-
-
 
 MainWindow::MainWindow(QWidget *parent, int dificultad, short selheroe) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
@@ -71,25 +68,6 @@ MainWindow::MainWindow(QWidget *parent, int dificultad, short selheroe) : QMainW
 
     puntos = 0;
     on_progressBar_Puntuacion_valueChanged(puntos);
-
-    int wi, hi, xi, yi;        //leen los parametros dde cada bloque
-    string linea;
-
-    ifstream archivo("muros.txt");
-
-    while (getline(archivo, linea)) {
-        stringstream ss(linea);
-        string valor;
-
-        if (getline(ss, valor, ',')) wi = stoi(valor);
-        if (getline(ss, valor, ',')) hi = stoi(valor);
-        if (getline(ss, valor, ',')) xi = stoi(valor);
-        if (getline(ss, valor, ',')) yi = stoi(valor);
-
-        muro.push_back(new muros(wi,hi,xi,yi));
-        scene1->addItem(muro.back());
-    }
-    archivo.close();
 
     running = true;
 }
@@ -677,7 +655,7 @@ void MainWindow::perdiste(QGraphicsScene *scene)
 void MainWindow::cambioEscena()
 {
 
-    if (escena == 1 && puntos >= 1)
+    if (escena == 1 && puntos >= 10)
     {
         escena = 2;
         eliminaItems(scene1);
@@ -699,7 +677,7 @@ void MainWindow::cambioEscena()
         on_progressBar_valueChanged(vidas);
 
 
-    }else if(escena == 2 && puntos >= 1)
+    }else if(escena == 2 && puntos >= 10)
     {
         escena = 3;
         eliminaItems(scene2);
