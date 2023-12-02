@@ -617,7 +617,7 @@ void MainWindow::obstacleMove()
         if (obstacle->x() < 0 - obstacle->boundingRect().width())
         {
             scene3->removeItem(obstacle);
-            it = obstacles.erase(it);            
+            it = obstacles.erase(it);
             delete obstacle;
         }else
         {
