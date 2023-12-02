@@ -654,6 +654,11 @@ void MainWindow::eliminaItems(QGraphicsScene *scene)
     }
     allyBullets.clear();
 
+
+}
+
+void MainWindow::perdiste(QGraphicsScene *scene)
+{
     (*timer).stop();
     (*timerbalas).stop();
     (*timerObstaculos).stop();
@@ -661,10 +666,6 @@ void MainWindow::eliminaItems(QGraphicsScene *scene)
 
     running = false;
 
-}
-
-void MainWindow::perdiste(QGraphicsScene *scene)
-{
     QGraphicsTextItem *gameOverText = new QGraphicsTextItem("Game Over");
     QFont font("Comic Sans MS", 30);
     gameOverText->setFont(font);
