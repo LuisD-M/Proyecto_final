@@ -48,8 +48,14 @@ MainWindow::MainWindow(QWidget *parent, int dificultad, short selheroe) : QMainW
         cambioEscena();
         movimientoPersonaje();
         obstacleMove();
+        update();
     });                                                         //Conecta el temporizador para mover balas
     timer->start(11);                                                             // 16
+
+    timermove = new QTimer();
+    //connect(timermove, SIGNAL(timeout()), this, SLOT(update()));
+    timermove->start(500);
+
 
     timerObstaculos = new QTimer();
     connect(timerObstaculos, SIGNAL(timeout()), this, SLOT(generateObstacles()));
@@ -253,6 +259,14 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
     }
 }
 
+void MainWindow::update()
+{
+    if(escena == 2){
+        for (enemy1 *enemigo : enemies)
+            enemigo->moveBy(personaje);;
+    }
+}
+
 void MainWindow::movimientoBalaEscena1y2(int escena)
 {
     for (auto it = allyBullets.begin(); it != allyBullets.end();)
@@ -331,45 +345,47 @@ void MainWindow::generacionEnemigosEscena1y2(int escena)
 {
     int place = rand() % 4 + 1;
     int posy, posx;
+
     switch (place) {
 
-    case 1: // arriba
-    {
-        posy = 60;
-        posx = rand() % ((int)scenes[escena]->width()- 10 +1 ) + 10;
-        break;
-    }
-    case 2: // abajo
-    {
-        posy = 533;
-        posx = rand() % ((int)scenes[escena]->width()- 10 +1 ) + 10;
-        break;
-    }
-    case 3: // izquierda
-    {
-        posy = rand() % ((int)scenes[escena]->height() - 89) + 50;
-        posx = 20;
+        case 1: // arriba
+        {
+            posy = 60;
+            posx = rand() % ((int)scenes[escena]->width()- 10 +1 ) + 10;
+            break;
+        }
+        case 2: // abajo
+        {
+            posy = 533;
+            posx = rand() % ((int)scenes[escena]->width()- 10 +1 ) + 10;
+            break;
+        }
+        case 3: // izquierda
+        {
+            posy = rand() % ((int)scenes[escena]->height() - 89) + 50;
+            posx = 20;
 
+            break;
+        }
+        case 4: // derecha
+        {
+            posy = rand() % ((int)scenes[escena]->height() - 89) + 50;
+            posx = 1050;
+            break;
+        }
+        default:
+        {
+            posx = scenes[escena]->width()/2;
+            posy = scenes[escena]->height()/2;
+            qDebug() << "Numero aleatorio generado no es el esperado";
+        }
         break;
-    }
-    case 4: // derecha
-    {
-        posy = rand() % ((int)scenes[escena]->height() - 89) + 50;
-        posx = 1050;
-        break;
-    }
-    default:
-    {
-        posx = scenes[escena]->width()/2;
-        posy = scenes[escena]->height()/2;
-        qDebug() << "Numero aleatorio generado no es el esperado";
-    }
-    break;
-    }
-    villano = new enemy1();                                    //
-    scenes[escena]->addItem(villano);
-    villano->setPos(posx,posy);
-    enemies.push_front(villano);
+        }
+
+        villano = new enemy1();                                    //
+        scenes[escena]->addItem(villano);
+        villano->setPos(posx,posy);
+        enemies.push_front(villano);
 }
 
 void MainWindow::enemyGeneration()
@@ -383,6 +399,12 @@ void MainWindow::enemyGeneration()
     case 2:
     {
         generacionEnemigosEscena1y2(1);
+
+       /* for (auto enemy : enemies)
+        {
+            enemy->moveBy(personaje);
+        } */
+
     }
     case 3:
     {
@@ -655,7 +677,7 @@ void MainWindow::perdiste(QGraphicsScene *scene)
 void MainWindow::cambioEscena()
 {
 
-    if (escena == 1 && puntos >= 10)
+    if (escena == 1 && puntos >= 3)
     {
         escena = 2;
         eliminaItems(scene1);
@@ -677,7 +699,7 @@ void MainWindow::cambioEscena()
         on_progressBar_valueChanged(vidas);
 
 
-    }else if(escena == 2 && puntos >= 10)
+    }else if(escena == 2 && puntos >= 3)
     {
         escena = 3;
         eliminaItems(scene2);

@@ -13,6 +13,7 @@ balas::balas(int velx, int vely, QGraphicsEllipseItem *elip)
 balas::balas(const QPointF &mousePos, const QPointF &heroePos)
 {
     elip = new QGraphicsEllipseItem(0,0,ancho,alto);
+
     elip->setPos(heroePos.x(),heroePos.y());
 
     float angle = atan((mousePos.y()-elip->y())/(mousePos.x()-elip->x()));

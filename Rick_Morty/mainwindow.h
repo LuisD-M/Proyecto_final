@@ -56,6 +56,7 @@ private:
     QSet<int> keysPressed;
     float x,y,ancho,alto;
     QTimer *timer;
+    QTimer *timermove;
     QTimer *timer1;
     QTimer *enemyTimer;
     QTimer *timerbalas;
@@ -94,6 +95,7 @@ private:
     void keyReleaseEvent(QKeyEvent* event);
     void mousePressEvent(QMouseEvent *event);
 
+
 private slots:
     void obstacleMove();
     void generateObstacles();
@@ -106,6 +108,12 @@ private slots:
 
     void on_progressBar_valueChanged(int value);
     void on_progressBar_Puntuacion_valueChanged(int value);
+
+public slots:
+    void update();
+
+
+
 };
 #endif // MAINWINDOW_H
 

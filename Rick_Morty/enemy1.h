@@ -9,6 +9,10 @@
 #include <QGraphicsScene>
 #include <QKeyEvent>
 #include <QWidget>
+#include <cmath>
+
+#include "heroe.h"
+
 
 class enemy1 : public QObject, public QGraphicsItem
 {
@@ -16,8 +20,10 @@ class enemy1 : public QObject, public QGraphicsItem
 
 private:
     int posx=0, posy=0;
-    int velocidad=10;
+    float velocidad = 0.1;
     QPixmap *pixmap1_2;
+
+    heroe *heroeptr;             //puntero al heroe
 
 public:
     explicit enemy1(QObject *parent = nullptr);
@@ -32,8 +38,9 @@ public:
     int getPosy() const;
     void setPosy(int py);
     QPointF getPos() const;
-    void moveBy(int x, int y);
+    void moveBy(heroe *heroeptr);
     float ancho, alto;
+
 
 };
 

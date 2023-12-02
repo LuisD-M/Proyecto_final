@@ -27,11 +27,23 @@ void enemy1::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
     setScale(0.31);
 }
 
-void enemy1::moveBy(int x, int y)
+void enemy1::moveBy(heroe *heroeptr)
 {
-    posy +=y;
-    posx +=x;
-    setPos(posx,posy);
+    QPointF heroPos = heroeptr->getPos();
+
+    // Calcula la dirección hacia el héroe
+    float dx = heroPos.x() - x();
+    float dy = heroPos.y() - y();
+
+    float angle = atan(dy/dx);
+
+    if( heroPos.x() < x())
+        angle = angle+3.1416;
+
+
+    // Actualiza la posición del enemigo en la escena
+
+    setPos(x() + velocidad * cos(angle) , y() + velocidad * sin(angle));
 }
 
 int enemy1::getPosx() const{
