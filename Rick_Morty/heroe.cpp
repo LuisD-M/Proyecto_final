@@ -3,16 +3,14 @@
 
 heroe::heroe(QObject *parent) : QObject{parent}
 {
-    pixmap1 = new QPixmap(":/Imagenes/Rick.png");                     // inicializar puntero de QPixmap
-
-    setScale(0.20);
-
-    vely = 0;
-    velx = 0;
-    ancho = 159;                                                    //dimensiones imagen
-    alto = 315;
+    pixmap1 = nullptr;
 }
 
+
+heroe::~heroe()
+{
+    delete pixmap1;
+}
 
 QRectF heroe::boundingRect() const
 {

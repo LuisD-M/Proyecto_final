@@ -17,10 +17,15 @@ class enemy1 : public QObject, public QGraphicsItem
 private:
     int posx=0, posy=0;
     int velocidad=10;
+
+protected:
+
     QPixmap *pixmap1_2;
+    float ancho, alto;
 
 public:
     explicit enemy1(QObject *parent = nullptr);
+    ~enemy1();
 
     enemy1(int x, int y);                       // Constructor para inicializar  las posiciones posx e posy del sprite
 
@@ -33,7 +38,7 @@ public:
     void setPosy(int py);
     QPointF getPos() const;
     void moveBy(int x, int y);
-    float ancho, alto;
+
 
 };
 

@@ -29,6 +29,7 @@ protected:  // Cambiamos de privado a protegido
 
 public:
     explicit heroe(QObject *parent = nullptr);
+    ~heroe();
 
     //QTimer *timer1;                                            // Puntero a un QTimer programar actualziacion del sprite
 

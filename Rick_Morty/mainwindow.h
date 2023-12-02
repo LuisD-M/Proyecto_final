@@ -26,9 +26,10 @@
 
 #include <heroe.h>
 #include <balas.h>
-#include <enemy1.h>
-#include <start.h>
-#include <heroe2.h>
+#include <escolta.h>
+#include <alien.h>
+#include <rick.h>
+#include <morty.h>
 #include <obstaculo.h>
 
 
@@ -56,12 +57,11 @@ private:
     QSet<int> keysPressed;
     float x,y,ancho,alto;
     QTimer *timer;
-    QTimer *timer1;
     QTimer *enemyTimer;
     QTimer *timerbalas;
     QTimer *timerObstaculos;
+    QTimer *timerPuntajeNivel3;
     heroe *personaje;
-    enemy1 *villano;
 
     QList<balas*> allyBullets;
     QList<balas*> enemyBullets;
@@ -78,6 +78,7 @@ private:
 
     void eliminaItems(QGraphicsScene *scene);
     void perdiste(QGraphicsScene *scene);
+    void ganaste(QGraphicsScene *scene);
 
     void disparoEscena1y2(QPointF mousePos,int escena);
     void movimientoPersonajeEscena1y2();
@@ -89,6 +90,8 @@ private:
     void generacionBalaEnemigaEscena3();
     void colisionEscena1y2(int escena);
     void colisionEscena3();
+
+    void detieneTimers();
 
     void keyPressEvent(QKeyEvent* event);
     void keyReleaseEvent(QKeyEvent* event);
@@ -103,6 +106,7 @@ private slots:
     void colission();
     void cambioEscena();
     void movimientoPersonaje();
+    void aumentaPuntaje();
 
     void on_progressBar_valueChanged(int value);
     void on_progressBar_Puntuacion_valueChanged(int value);
