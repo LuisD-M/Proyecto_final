@@ -3,10 +3,7 @@
 
 enemy1::enemy1(QObject *parent) : QObject{parent}
 {
-    pixmap1_2 = new QPixmap(":/Imagenes/Marciano.png");                     // inicializar puntero de QPixmap
-
-    ancho = 87;                                                    //dimensiones imagen
-    alto = 177;
+    pixmap1_2 = nullptr;                     // inicializar puntero de QPixmap
 }
 
 enemy1::enemy1(int x, int y)
@@ -14,6 +11,11 @@ enemy1::enemy1(int x, int y)
     posx = x;
     posy = y;
     setPos(posx,posy);
+}
+
+enemy1::~enemy1()
+{
+    delete pixmap1_2;
 }
 
 QRectF enemy1::boundingRect() const

@@ -9,22 +9,28 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    alien.cpp \
     balas.cpp \
     enemy1.cpp \
+    escolta.cpp \
     heroe.cpp \
-    heroe2.cpp \
     main.cpp \
     mainwindow.cpp \
+    morty.cpp \
     obstaculo.cpp \
+    rick.cpp \
     start.cpp
 
 HEADERS += \
+    alien.h \
     balas.h \
     enemy1.h \
+    escolta.h \
     heroe.h \
-    heroe2.h \
     mainwindow.h \
+    morty.h \
     obstaculo.h \
+    rick.h \
     start.h
 
 FORMS += \

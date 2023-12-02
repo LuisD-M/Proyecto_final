@@ -29,13 +29,13 @@ MainWindow::MainWindow(QWidget *parent, int dificultad, short selheroe) : QMainW
 
 
     if(selheroe==1)
-        personaje = new heroe();
+        personaje = new rick();
 
     else if(selheroe==2)
-        personaje = new heroe2;
+        personaje = new morty;
 
     else
-        personaje = new heroe();                                 // crea heroe
+        personaje = new rick();                                 // crea heroe
 
     scene1->addItem(personaje);                               //Añade a la escena
     personaje->setPos(scene1->width()/2,scene1->height()/2);
@@ -68,6 +68,10 @@ MainWindow::MainWindow(QWidget *parent, int dificultad, short selheroe) : QMainW
     enemyTimer = new QTimer(this);
     connect(enemyTimer, SIGNAL(timeout()), this, SLOT(enemyGeneration()));
     enemyTimer->start(2000);
+
+    timerPuntajeNivel3 = new QTimer(this);
+    connect(timerPuntajeNivel3, SIGNAL(timeout()), this, SLOT(aumentaPuntaje()));
+    timerPuntajeNivel3->start(3000);
 
     vidas = 5;
     on_progressBar_valueChanged(vidas);
@@ -114,8 +118,7 @@ void MainWindow::movimientoPersonajeEscena1y2()
             {
             case Qt::Key_A:
                 personaje->moveBy(-step, 0);
-
-                personaje->setRotation(0);
+                personaje->setRotation(-90);
                 break;
             case Qt::Key_D:
                 personaje->moveBy(step, 0);
@@ -380,12 +383,33 @@ void MainWindow::generacionEnemigosEscena1y2(int escena)
             qDebug() << "Numero aleatorio generado no es el esperado";
         }
         break;
-        }
+    }
+    case 4: // derecha
+    {
+        posy = rand() % ((int)scenes[escena]->height() - 89) + 50;
+        posx = 1050;
+        break;
+    }
+    default:
+    {
+        posx = scenes[escena]->width()/2;
+        posy = scenes[escena]->height()/2;
+        qDebug() << "Numero aleatorio generado no es el esperado";
+    }
+    break;
+    }
+    enemy1 *villano;
+    if (escena == 0)
+    {
+        villano = new alien();                                    //
 
-        villano = new enemy1();                                    //
-        scenes[escena]->addItem(villano);
-        villano->setPos(posx,posy);
-        enemies.push_front(villano);
+    }else
+    {
+        villano = new escolta();
+    }
+    scenes[escena]->addItem(villano);
+    villano->setPos(posx,posy);
+    enemies.push_front(villano);
 }
 
 void MainWindow::enemyGeneration()
@@ -617,7 +641,7 @@ void MainWindow::obstacleMove()
         if (obstacle->x() < 0 - obstacle->boundingRect().width())
         {
             scene3->removeItem(obstacle);
-            it = obstacles.erase(it);            
+            it = obstacles.erase(it);
             delete obstacle;
         }else
         {
@@ -657,16 +681,36 @@ void MainWindow::eliminaItems(QGraphicsScene *scene)
 
 }
 
-void MainWindow::perdiste(QGraphicsScene *scene)
+void MainWindow::detieneTimers()
 {
     (*timer).stop();
     (*timerbalas).stop();
     (*timerObstaculos).stop();
     (*enemyTimer).stop();
+    (*timerPuntajeNivel3).stop();
+}
 
+void MainWindow::perdiste(QGraphicsScene *scene)
+{
+
+    detieneTimers();
     running = false;
 
     QGraphicsTextItem *gameOverText = new QGraphicsTextItem("Game Over");
+    QFont font("Comic Sans MS", 30);
+    gameOverText->setFont(font);
+    gameOverText->setDefaultTextColor(Qt::black);
+    gameOverText->setPos(scene->width() / 2 - 100, scene->height() / 2 - 50);
+    scene->addItem(gameOverText);
+}
+
+void MainWindow::ganaste(QGraphicsScene *scene)
+{
+
+    detieneTimers();
+    running = false;
+
+    QGraphicsTextItem *gameOverText = new QGraphicsTextItem("You Win");
     QFont font("Comic Sans MS", 30);
     gameOverText->setFont(font);
     gameOverText->setDefaultTextColor(Qt::black);
@@ -721,6 +765,19 @@ void MainWindow::cambioEscena()
         puntos = 0;
         on_progressBar_Puntuacion_valueChanged(puntos);
 
+    }
+}
+
+void MainWindow::aumentaPuntaje()
+{
+    if(escena == 3)
+    {
+        puntos++;
+        on_progressBar_Puntuacion_valueChanged(puntos);
+        if (puntos == 10)
+        {
+            ganaste(scene3);
+        }
     }
 }
 
