@@ -22,6 +22,26 @@ void heroe::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWi
     painter->drawPixmap(-ancho/2, -alto/2,*pixmap1,0,0,ancho,alto);
 }
 
+int heroe::getPosx() const
+{
+    return static_cast<int>(this->x());
+}
+
+void heroe::setPosx(int px)
+{
+    setPos(px, this->y());
+}
+
+int heroe::getPosy() const
+{
+    return static_cast<int>(this->y());
+}
+
+void heroe::setPosy(int py)
+{
+    setPos(this->x(), py);
+}
+
 void heroe::moveBy(int x, int y)
 {
 
@@ -74,3 +94,5 @@ void heroe::setLevel3Scale()
 {
     this->setScale(scale1);
 }
+
+
