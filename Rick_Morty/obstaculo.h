@@ -4,28 +4,19 @@
 #include <QObject>
 #include <QWidget>
 #include <QGraphicsRectItem>
+#include <QGraphicsPixmapItem>
 
-class Obstaculo: public QObject
+class Obstaculo: public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
 public:
     // constructors
-    Obstaculo();
-    Obstaculo(QGraphicsRectItem* rect);
-    Obstaculo(const QRectF &sceneSize,const QRectF &size);
-    Obstaculo(const QRectF &sceneSize,const int width, const int height);
+    Obstaculo(const QRectF &sceneSize, const float scale, QGraphicsItem* im=0);
 
     // destructor
     ~Obstaculo();
 
     //
-    int getX() const;
-    void setX(int x);
-    int getY() const;
-    void setY(int y);
-    QPointF getPos() const;
-    void setPos(QPointF);
-    void setPos(int x, int y);
     void moveBy(int x, int y);
     void move();
 
@@ -38,7 +29,6 @@ public:
 
 private:
     const int vel = 5;
-    QGraphicsRectItem *rect;
 };
 
-#endif // OBSTACULO_H
+#endif // OBSTACLE_H
