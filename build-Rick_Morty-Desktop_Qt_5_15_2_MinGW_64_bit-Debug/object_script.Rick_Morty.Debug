@@ -4,7 +4,6 @@ debug/heroe.o
 debug/heroe2.o
 debug/main.o
 debug/mainwindow.o
-debug/muros.o
 debug/obstaculo.o
 debug/start.o
 debug/qrc_imagenes.o

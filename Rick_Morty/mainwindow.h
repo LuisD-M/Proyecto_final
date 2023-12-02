@@ -23,20 +23,14 @@
 #include <QGraphicsEllipseItem>
 #include <QFont>
 #include <QGraphicsTextItem>
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include <string>
 
 #include <heroe.h>
 #include <balas.h>
 #include <enemy1.h>
 #include <start.h>
 #include <heroe2.h>
-#include <muros.h>
 #include <obstaculo.h>
 
-using namespace std;
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -69,12 +63,10 @@ private:
     heroe *personaje;
     enemy1 *villano;
 
-    QList<muros *> muro;
-
-    std::list<balas*> allyBullets;
-    std::list<balas*> enemyBullets;
-    std::list<enemy1*> enemies;
-    std::list<Obstaculo*>obstacles;
+    QList<balas*> allyBullets;
+    QList<balas*> enemyBullets;
+    QList<enemy1*> enemies;
+    QList<Obstaculo*>obstacles;
 
     short escena;
     int dificultad;
