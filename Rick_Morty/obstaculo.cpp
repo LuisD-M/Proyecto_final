@@ -7,10 +7,7 @@ Obstaculo::Obstaculo(const QRectF &sceneSize, const float scale, QGraphicsItem* 
     setPos(sceneSize.width(),sceneSize.height()-this->boundingRect().height()*this->scale());
 }
 
-Obstaculo::~Obstaculo()
-{
-
-}
+Obstaculo::~Obstaculo(){}
 
 void Obstaculo::moveBy(int x, int y)
 {
@@ -21,9 +18,6 @@ void Obstaculo::move()
 {
     setPos(this->x()-vel,this->y());
 }
-
-//
-
 
 int Obstaculo::getVel() const
 {

@@ -8,6 +8,7 @@
 #include <QList>
 #include <QObject>
 #include <QTimer>
+#include <QDateTime>
 #include <QPixmap>
 #include <QGraphicsPixmapItem>
 #include <QRect>
@@ -23,6 +24,11 @@
 #include <QGraphicsEllipseItem>
 #include <QFont>
 #include <QGraphicsTextItem>
+#include <string>
+#include <iostream>
+#include <QDebug>
+#include <fstream>
+#include <sstream>
 
 #include <heroe.h>
 #include <balas.h>
@@ -32,6 +38,7 @@
 #include <morty.h>
 #include <obstaculo.h>
 
+using namespace std;
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -46,10 +53,9 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr, int dificultad=0, short selheroe=0); // constructor
-    ~MainWindow(); // destructor
 
-
+    MainWindow(QWidget *parent = nullptr, int dificultad=0, short selheroe=0, string name="");   //constructor
+    ~MainWindow();  //destructor
 
 private:
     Ui::MainWindow *ui; // contiene la ventana
@@ -75,6 +81,7 @@ private:
     short escena; // numero de la escena
     int dificultad; // dificultad del juego
     short selheroe; // numero del heroe escodigo
+    string name;    // almacena nombre de la ventana usuario
 
     int vidas; // cantidad de vidas
     int puntos; // cantidad de puntos
@@ -101,6 +108,8 @@ private:
     void keyPressEvent(QKeyEvent* event); // detecta cuando una tecla se presiona
     void keyReleaseEvent(QKeyEvent* event); // detecta cuando una tecla deja de presionarse
     void mousePressEvent(QMouseEvent *event); // detecta cuando se da click en pantalla
+
+    void Resultado(string linea, string resu);  // escribe resultado final en un archivo txt
 
 
 private slots:
