@@ -1223,6 +1223,10 @@ release/moc_mainwindow.cpp: ../Rick_Morty/mainwindow.h \
 		C:/Qt/6.5.2/mingw_64/include/QtCore/QTimer \
 		C:/Qt/6.5.2/mingw_64/include/QtCore/qtimer.h \
 		C:/Qt/6.5.2/mingw_64/include/QtCore/qbasictimer.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/QDateTime \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/qdatetime.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/qcalendar.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.5.2/mingw_64/include/QtGui/QPixmap \
 		C:/Qt/6.5.2/mingw_64/include/QtWidgets/QGraphicsPixmapItem \
 		C:/Qt/6.5.2/mingw_64/include/QtWidgets/qgraphicsitem.h \
@@ -1958,6 +1962,10 @@ release/moc_start.cpp: ../Rick_Morty/start.h \
 		C:/Qt/6.5.2/mingw_64/include/QtCore/QTimer \
 		C:/Qt/6.5.2/mingw_64/include/QtCore/qtimer.h \
 		C:/Qt/6.5.2/mingw_64/include/QtCore/qbasictimer.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/QDateTime \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/qdatetime.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/qcalendar.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.5.2/mingw_64/include/QtGui/QPixmap \
 		C:/Qt/6.5.2/mingw_64/include/QtWidgets/QGraphicsPixmapItem \
 		C:/Qt/6.5.2/mingw_64/include/QtCore/QDebug \
@@ -3047,6 +3055,10 @@ release/main.o: ../Rick_Morty/main.cpp ../Rick_Morty/mainwindow.h \
 		C:/Qt/6.5.2/mingw_64/include/QtCore/QTimer \
 		C:/Qt/6.5.2/mingw_64/include/QtCore/qtimer.h \
 		C:/Qt/6.5.2/mingw_64/include/QtCore/qbasictimer.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/QDateTime \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/qdatetime.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/qcalendar.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.5.2/mingw_64/include/QtGui/QPixmap \
 		C:/Qt/6.5.2/mingw_64/include/QtWidgets/QGraphicsPixmapItem \
 		C:/Qt/6.5.2/mingw_64/include/QtWidgets/qgraphicsitem.h \
@@ -3099,7 +3111,6 @@ release/main.o: ../Rick_Morty/main.cpp ../Rick_Morty/mainwindow.h \
 		C:/Qt/6.5.2/mingw_64/include/QtCore/qpromise.h \
 		C:/Qt/6.5.2/mingw_64/include/QtGui/qguiapplication.h \
 		C:/Qt/6.5.2/mingw_64/include/QtGui/qinputmethod.h \
-		C:/Qt/6.5.2/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.5.2/mingw_64/include/QtGui/qguiapplication_platform.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\main.o ..\Rick_Morty\main.cpp
 
@@ -3270,6 +3281,10 @@ release/mainwindow.o: ../Rick_Morty/mainwindow.cpp ../Rick_Morty/mainwindow.h \
 		C:/Qt/6.5.2/mingw_64/include/QtCore/QTimer \
 		C:/Qt/6.5.2/mingw_64/include/QtCore/qtimer.h \
 		C:/Qt/6.5.2/mingw_64/include/QtCore/qbasictimer.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/QDateTime \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/qdatetime.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/qcalendar.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.5.2/mingw_64/include/QtGui/QPixmap \
 		C:/Qt/6.5.2/mingw_64/include/QtWidgets/QGraphicsPixmapItem \
 		C:/Qt/6.5.2/mingw_64/include/QtWidgets/qgraphicsitem.h \
@@ -3301,41 +3316,7 @@ release/mainwindow.o: ../Rick_Morty/mainwindow.cpp ../Rick_Morty/mainwindow.h \
 		../Rick_Morty/rick.h \
 		../Rick_Morty/morty.h \
 		../Rick_Morty/obstaculo.h \
-		ui_mainwindow.h \
-		C:/Qt/6.5.2/mingw_64/include/QtCore/QVariant \
-		C:/Qt/6.5.2/mingw_64/include/QtWidgets/QApplication \
-		C:/Qt/6.5.2/mingw_64/include/QtWidgets/qapplication.h \
-		C:/Qt/6.5.2/mingw_64/include/QtCore/qcoreapplication.h \
-		C:/Qt/6.5.2/mingw_64/include/QtCore/qeventloop.h \
-		C:/Qt/6.5.2/mingw_64/include/QtCore/qcoreapplication_platform.h \
-		C:/Qt/6.5.2/mingw_64/include/QtCore/qfuture.h \
-		C:/Qt/6.5.2/mingw_64/include/QtCore/qfutureinterface.h \
-		C:/Qt/6.5.2/mingw_64/include/QtCore/qmutex.h \
-		C:/Qt/6.5.2/mingw_64/include/QtCore/qtsan_impl.h \
-		C:/Qt/6.5.2/mingw_64/include/QtCore/qresultstore.h \
-		C:/Qt/6.5.2/mingw_64/include/QtCore/qfuture_impl.h \
-		C:/Qt/6.5.2/mingw_64/include/QtCore/qthreadpool.h \
-		C:/Qt/6.5.2/mingw_64/include/QtCore/qthread.h \
-		C:/Qt/6.5.2/mingw_64/include/QtCore/qdeadlinetimer.h \
-		C:/Qt/6.5.2/mingw_64/include/QtCore/qelapsedtimer.h \
-		C:/Qt/6.5.2/mingw_64/include/QtCore/qrunnable.h \
-		C:/Qt/6.5.2/mingw_64/include/QtCore/qexception.h \
-		C:/Qt/6.5.2/mingw_64/include/QtCore/qpromise.h \
-		C:/Qt/6.5.2/mingw_64/include/QtGui/qguiapplication.h \
-		C:/Qt/6.5.2/mingw_64/include/QtGui/qinputmethod.h \
-		C:/Qt/6.5.2/mingw_64/include/QtCore/qlocale.h \
-		C:/Qt/6.5.2/mingw_64/include/QtGui/qguiapplication_platform.h \
-		C:/Qt/6.5.2/mingw_64/include/QtWidgets/QLabel \
-		C:/Qt/6.5.2/mingw_64/include/QtWidgets/qlabel.h \
-		C:/Qt/6.5.2/mingw_64/include/QtGui/qpicture.h \
-		C:/Qt/6.5.2/mingw_64/include/QtGui/qtextdocument.h \
-		C:/Qt/6.5.2/mingw_64/include/QtWidgets/QMenuBar \
-		C:/Qt/6.5.2/mingw_64/include/QtWidgets/qmenubar.h \
-		C:/Qt/6.5.2/mingw_64/include/QtWidgets/qmenu.h \
-		C:/Qt/6.5.2/mingw_64/include/QtWidgets/QProgressBar \
-		C:/Qt/6.5.2/mingw_64/include/QtWidgets/qprogressbar.h \
-		C:/Qt/6.5.2/mingw_64/include/QtWidgets/QStatusBar \
-		C:/Qt/6.5.2/mingw_64/include/QtWidgets/qstatusbar.h
+		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\mainwindow.o ..\Rick_Morty\mainwindow.cpp
 
 release/morty.o: ../Rick_Morty/morty.cpp ../Rick_Morty/morty.h \
@@ -4032,6 +4013,10 @@ release/start.o: ../Rick_Morty/start.cpp ../Rick_Morty/start.h \
 		C:/Qt/6.5.2/mingw_64/include/QtCore/QTimer \
 		C:/Qt/6.5.2/mingw_64/include/QtCore/qtimer.h \
 		C:/Qt/6.5.2/mingw_64/include/QtCore/qbasictimer.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/QDateTime \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/qdatetime.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/qcalendar.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.5.2/mingw_64/include/QtGui/QPixmap \
 		C:/Qt/6.5.2/mingw_64/include/QtWidgets/QGraphicsPixmapItem \
 		C:/Qt/6.5.2/mingw_64/include/QtCore/QDebug \
@@ -4053,38 +4038,7 @@ release/start.o: ../Rick_Morty/start.cpp ../Rick_Morty/start.h \
 		../Rick_Morty/rick.h \
 		../Rick_Morty/morty.h \
 		../Rick_Morty/obstaculo.h \
-		ui_start.h \
-		C:/Qt/6.5.2/mingw_64/include/QtCore/QVariant \
-		C:/Qt/6.5.2/mingw_64/include/QtWidgets/QApplication \
-		C:/Qt/6.5.2/mingw_64/include/QtWidgets/qapplication.h \
-		C:/Qt/6.5.2/mingw_64/include/QtCore/qcoreapplication.h \
-		C:/Qt/6.5.2/mingw_64/include/QtCore/qeventloop.h \
-		C:/Qt/6.5.2/mingw_64/include/QtCore/qcoreapplication_platform.h \
-		C:/Qt/6.5.2/mingw_64/include/QtCore/qfuture.h \
-		C:/Qt/6.5.2/mingw_64/include/QtCore/qfutureinterface.h \
-		C:/Qt/6.5.2/mingw_64/include/QtCore/qmutex.h \
-		C:/Qt/6.5.2/mingw_64/include/QtCore/qtsan_impl.h \
-		C:/Qt/6.5.2/mingw_64/include/QtCore/qresultstore.h \
-		C:/Qt/6.5.2/mingw_64/include/QtCore/qfuture_impl.h \
-		C:/Qt/6.5.2/mingw_64/include/QtCore/qthreadpool.h \
-		C:/Qt/6.5.2/mingw_64/include/QtCore/qthread.h \
-		C:/Qt/6.5.2/mingw_64/include/QtCore/qdeadlinetimer.h \
-		C:/Qt/6.5.2/mingw_64/include/QtCore/qelapsedtimer.h \
-		C:/Qt/6.5.2/mingw_64/include/QtCore/qrunnable.h \
-		C:/Qt/6.5.2/mingw_64/include/QtCore/qexception.h \
-		C:/Qt/6.5.2/mingw_64/include/QtCore/qpromise.h \
-		C:/Qt/6.5.2/mingw_64/include/QtGui/qguiapplication.h \
-		C:/Qt/6.5.2/mingw_64/include/QtGui/qinputmethod.h \
-		C:/Qt/6.5.2/mingw_64/include/QtCore/qlocale.h \
-		C:/Qt/6.5.2/mingw_64/include/QtGui/qguiapplication_platform.h \
-		C:/Qt/6.5.2/mingw_64/include/QtWidgets/QMenuBar \
-		C:/Qt/6.5.2/mingw_64/include/QtWidgets/qmenubar.h \
-		C:/Qt/6.5.2/mingw_64/include/QtWidgets/qmenu.h \
-		C:/Qt/6.5.2/mingw_64/include/QtWidgets/QPushButton \
-		C:/Qt/6.5.2/mingw_64/include/QtWidgets/qpushbutton.h \
-		C:/Qt/6.5.2/mingw_64/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/6.5.2/mingw_64/include/QtWidgets/QStatusBar \
-		C:/Qt/6.5.2/mingw_64/include/QtWidgets/qstatusbar.h
+		ui_start.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\start.o ..\Rick_Morty\start.cpp
 
 release/qrc_imagenes.o: release/qrc_imagenes.cpp 
