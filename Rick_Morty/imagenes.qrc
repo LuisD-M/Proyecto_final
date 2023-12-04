@@ -7,8 +7,7 @@
         <file>Imagenes/escombro.png</file>
         <file>Imagenes/FondoVentana1.png</file>
         <file>Imagenes/Morty.png</file>
-        <file>Imagenes/Bloque1.png</file>
-        <file>Imagenes/Fondo3.png</file>
         <file>Imagenes/Escolta.png</file>
+        <file>Imagenes/Fondo3.png</file>
     </qresource>
 </RCC>

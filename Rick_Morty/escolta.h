@@ -4,16 +4,20 @@
 #include <QObject>
 #include "enemy1.h"
 
-class escolta : public enemy1 //Se hereda de la clase heroe
+/*
+ * clase escolta son los enemigos del nivel 2
+*/
+
+class escolta : public enemy1
 {
     Q_OBJECT
 private:
 
 
 public:
-    explicit escolta(QObject *parent = nullptr);
+    explicit escolta(QObject *parent = nullptr); // constructor
 
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget); // metodo que pinta en pantalla la instancia
 
 signals:
 };

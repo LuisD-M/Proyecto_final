@@ -6,19 +6,20 @@
 #include <QGraphicsRectItem>
 #include <QGraphicsPixmapItem>
 
+/*
+ * clase Obstaculo son los obstaculos del nivel 3
+*/
+
 class Obstaculo: public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
 public:
-    // constructors
-    Obstaculo(const QRectF &sceneSize, const float scale, QGraphicsItem* im=0);
+    Obstaculo(const QRectF &sceneSize, const float scale, QGraphicsItem* im=0); // constructor
 
-    // destructor
-    ~Obstaculo();
+    ~Obstaculo(); // destructor
 
-    //
-    void moveBy(int x, int y);
-    void move();
+    void moveBy(int x, int y); // metodo que mueve al obstaculo en pantalla
+    void move(); // metodo que mueve al obstaculo de acuerdo a la velocidad de la instancia
 
     // setters and getters
     int getVel() const;
@@ -28,7 +29,7 @@ public:
     int getHeight() const;
 
 private:
-    const int vel = 5;
+    const int vel = 5; // velocidad del obstaculo
 };
 
 #endif // OBSTACLE_H
