@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>Imagenes/Escolta.jpg</file>
         <file>Imagenes/Fondo1.jpg</file>
         <file>Imagenes/Rick.png</file>
         <file>Imagenes/Marciano.png</file>
@@ -10,5 +9,6 @@
         <file>Imagenes/Morty.png</file>
         <file>Imagenes/Bloque1.png</file>
         <file>Imagenes/Fondo3.png</file>
+        <file>Imagenes/Escolta.png</file>
     </qresource>
 </RCC>

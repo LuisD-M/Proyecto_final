@@ -37,6 +37,7 @@ public:
     int getVel() const;
     QGraphicsEllipseItem *getElip() const;
     void setElip(QGraphicsEllipseItem *newElip);
+
     int getWidth() const;
     int getHeight() const;
 

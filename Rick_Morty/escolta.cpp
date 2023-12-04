@@ -2,7 +2,7 @@
 
 escolta::escolta(QObject *parent) : enemy1(parent)     //LLama al construrtor de  la clase general heroe
 {
-    pixmap1_2 = new QPixmap(":/Imagenes/Escolta.jpg");                     // inicializar puntero de QPixmap
+    pixmap1_2 = new QPixmap(":/Imagenes/Escolta.png");                     // inicializar puntero de QPixmap
     setScale(0.3);
     ancho = 105;                                                    //dimensiones imagen
     alto = 277;
