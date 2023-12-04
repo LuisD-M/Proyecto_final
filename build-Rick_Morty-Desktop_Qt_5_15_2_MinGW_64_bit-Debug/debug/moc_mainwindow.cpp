@@ -84,7 +84,7 @@ static const uint qt_meta_data_MainWindow[] = {
       10,    0,   82,    2, 0x08 /* Private */,
       11,    1,   83,    2, 0x08 /* Private */,
       13,    1,   86,    2, 0x08 /* Private */,
-      14,    0,   89,    2, 0x0a /* Public */,
+      14,    0,   89,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,

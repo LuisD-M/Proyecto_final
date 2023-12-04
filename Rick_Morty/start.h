@@ -4,11 +4,16 @@
 #include <QMainWindow>
 #include <QGraphicsRectItem>
 #include <QGraphicsView>
+#include <string>
+
 #include "mainwindow.h"
+
+using namespace std;
 
 /*
  * clase start es la ventana de inicio donde se escogen las condiciones iniciales del juego
 */
+
 
 namespace Ui {
 class start;
@@ -36,12 +41,16 @@ private slots:
 
     void on_Morty_clicked();
 
+
 private:
     Ui::start *ui; // contiene la ventana
     QMainWindow *gw; // contiene la siguiente ventana a mostrar
 
+    string name;    //almacena nombre de usuario
+
     int dificultad=50; // dificultad del juego
     short selheroe=0; // eleccion del heroe
+
 };
 
 #endif // START_H
