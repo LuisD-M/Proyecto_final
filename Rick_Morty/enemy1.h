@@ -13,29 +13,30 @@
 
 #include "heroe.h"
 
+/*
+ * clase padre de los enemigos
+*/
 
 class enemy1 : public QObject, public QGraphicsItem
 {
     Q_OBJECT
 
 private:
-    float velocidad = 0.1;
+    float velocidad = 0.1; // define la velocidad a la que se mueven los enemigos
 
 protected:
-    QPixmap *pixmap1_2;
-    float ancho, alto;
-    heroe *heroeptr;             //puntero al heroe
+    QPixmap *pixmap1_2; // imagen de los enemigos
+    float ancho, alto; // dimensiones de los enemigos
 
 public:
-    explicit enemy1(QObject *parent = nullptr);
-    ~enemy1();
+    explicit enemy1(QObject *parent = nullptr); // constructor
+    ~enemy1(); // destructor
 
-    QRectF boundingRect() const;
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
+    QRectF boundingRect() const; // metodo que define las dimensiones del rectangulo que recubre la imagen
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget); // metodo que pinta en pantalla la instancia
 
-    QPointF getPos() const;
-    void moveBy(heroe *heroeptr);
-
+    void moveBy(heroe *heroeptr); // metodo que mueve a los enemigos en direccion al heroe
+    QPointF getPos() const; // metodo que obtiene la posicion en pantalla del enemigo
 
 };
 

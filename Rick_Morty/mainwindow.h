@@ -37,49 +37,54 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
+/*
+ * clase MainWindow es la ventana principal, en esta sucede el juegos
+*/
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr, int dificultad=0, short selheroe=0);
-    ~MainWindow();
+    MainWindow(QWidget *parent = nullptr, int dificultad=0, short selheroe=0); // constructor
+    ~MainWindow(); // destructor
 
-    void gameover();
+
 
 private:
-    Ui::MainWindow *ui;
+    Ui::MainWindow *ui; // contiene la ventana
 
-    QGraphicsScene *scene1;
-    QGraphicsScene *scene2;
-    QGraphicsScene *scene3;
-    QGraphicsScene *scenes[3];
-    QSet<int> keysPressed;
-    float x,y,ancho,alto;
-    QTimer *timer;
-    QTimer *enemyTimer;
-    QTimer *timerbalas;
-    QTimer *timerObstaculos;
-    QTimer *timerPuntajeNivel3;
-    heroe *personaje;
+    QGraphicsScene *scene1; // escena primer nivel
+    QGraphicsScene *scene2; // escena segundo nivel
+    QGraphicsScene *scene3; // escena tercer nivel
+    QGraphicsScene *scenes[3]; // escenas
+    QSet<int> keysPressed; // teclas presionadas
 
-    QList<balas*> allyBullets;
-    QList<balas*> enemyBullets;
-    QList<enemy1*> enemies;
-    QList<Obstaculo*>obstacles;
+    QTimer *timer; // timer general del juego
+    QTimer *enemyTimer; // timer que determina cada cuanto se generan los enemigos
+    QTimer *timerbalas; // timer que determina cada cuanto se generan las balas enemigas
+    QTimer *timerObstaculos; // timer que determina cada cuanto se generan los obstaculos
+    QTimer *timerPuntajeNivel3; // timer que aumenta el puntaje (nivel 3)
+    heroe *personaje; // heroe escogido
 
-    short escena;
-    int dificultad;
-    short selheroe;
+    QList<balas*> allyBullets; // balas aliadas
+    QList<balas*> enemyBullets; // balas enemigas
+    QList<enemy1*> enemies; // enemigos
+    QList<Obstaculo*>obstacles; // obstaculos
 
-    int vidas;
-    int puntos;
-    bool running;
+    short escena; // numero de la escena
+    int dificultad; // dificultad del juego
+    short selheroe; // numero del heroe escodigo
 
-    void eliminaItems(QGraphicsScene *scene);
-    void perdiste(QGraphicsScene *scene);
-    void ganaste(QGraphicsScene *scene);
+    int vidas; // cantidad de vidas
+    int puntos; // cantidad de puntos
+    bool running; // si el juego sigue corriendo o no
 
+    void eliminaItems(QGraphicsScene *scene); // elimina los items de la escena
+    void perdiste(QGraphicsScene *scene); // imprime el mensaje de 'game over'
+    void ganaste(QGraphicsScene *scene); // imprime el mensaje de 'you win'
+
+    // sub division por escena de las dinamicas del juego
     void disparoEscena1y2(QPointF mousePos,int escena);
     void movimientoPersonajeEscena1y2();
     void movimientoPersonajeEscena3();
@@ -91,31 +96,28 @@ private:
     void colisionEscena1y2(int escena);
     void colisionEscena3();
 
-    void detieneTimers();
+    void detieneTimers(); // detine los timers al finalizar el juego
 
-    void keyPressEvent(QKeyEvent* event);
-    void keyReleaseEvent(QKeyEvent* event);
-    void mousePressEvent(QMouseEvent *event);
+    void keyPressEvent(QKeyEvent* event); // detecta cuando una tecla se presiona
+    void keyReleaseEvent(QKeyEvent* event); // detecta cuando una tecla deja de presionarse
+    void mousePressEvent(QMouseEvent *event); // detecta cuando se da click en pantalla
 
 
 private slots:
-    void obstacleMove();
-    void generateObstacles();
-    void bulletMove();
-    void enemyGeneration();
-    void enemyBulletGeneration();
-    void colission();
-    void cambioEscena();
-    void movimientoPersonaje();
-    void aumentaPuntaje();
+    void obstacleMove(); // define el movimiento de los obstaculos (nivel 3)
+    void generateObstacles(); // generalos obstacuols (nivel 3)
+    void bulletMove(); // define el movimiento de las balas
+    void enemyGeneration(); // define la generacion de los enemigos (nivel 1 y 2)
+    void enemyBulletGeneration(); // define la generacion de las balas
+    void colission(); // hace el manejo de colisiones
+    void cambioEscena(); // hace el manejo de cambio de escena para los cambios de niveles
+    void movimientoPersonaje(); // define el movimiento del personaje
+    void aumentaPuntaje(); // aumenta el puntaje por el tiempo transcurrido (nivel 3)
 
-    void on_progressBar_valueChanged(int value);
-    void on_progressBar_Puntuacion_valueChanged(int value);
+    void on_progressBar_valueChanged(int value); // actualiza la vida en pantalla
+    void on_progressBar_Puntuacion_valueChanged(int value); // actualiza la puntuacion en pantalla
 
-public slots:
-    void update();
-
-
+    void update(); // actualiza la posicion de los enemigos para simular movimiento (nivel 2)
 
 };
 #endif // MAINWINDOW_H

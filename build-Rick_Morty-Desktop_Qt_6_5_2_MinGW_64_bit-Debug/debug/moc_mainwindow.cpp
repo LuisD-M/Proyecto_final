@@ -138,7 +138,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSMainWindowENDCLASS[] = {
       10,    0,   94,    2, 0x08,    9 /* Private */,
       11,    1,   95,    2, 0x08,   10 /* Private */,
       13,    1,   98,    2, 0x08,   12 /* Private */,
-      14,    0,  101,    2, 0x0a,   14 /* Public */,
+      14,    0,  101,    2, 0x08,   14 /* Private */,
 
  // slots: parameters
     QMetaType::Void,

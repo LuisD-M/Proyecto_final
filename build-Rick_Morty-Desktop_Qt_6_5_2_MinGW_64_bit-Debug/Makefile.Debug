@@ -159,15 +159,14 @@ compiler_rcc_clean:
 debug/qrc_imagenes.cpp: ../Rick_Morty/imagenes.qrc \
 		C:/Qt/6.5.2/mingw_64/bin/rcc.exe \
 		../Rick_Morty/Imagenes/Fondo2.png \
+		../Rick_Morty/Imagenes/Escolta.png \
 		../Rick_Morty/Imagenes/Fondo3.png \
 		../Rick_Morty/Imagenes/Morty.png \
-		../Rick_Morty/Imagenes/Escolta.jpg \
 		../Rick_Morty/Imagenes/FondoVentana1.png \
 		../Rick_Morty/Imagenes/Marciano.png \
 		../Rick_Morty/Imagenes/Fondo1.jpg \
 		../Rick_Morty/Imagenes/escombro.png \
-		../Rick_Morty/Imagenes/Rick.png \
-		../Rick_Morty/Imagenes/Bloque1.png
+		../Rick_Morty/Imagenes/Rick.png
 	C:\Qt\6.5.2\mingw_64\bin\rcc.exe -name imagenes --no-zstd ..\Rick_Morty\imagenes.qrc -o debug\qrc_imagenes.cpp
 
 compiler_moc_predefs_make_all: debug/moc_predefs.h
@@ -352,6 +351,8 @@ debug/moc_alien.cpp: ../Rick_Morty/alien.h \
 		C:/Qt/6.5.2/mingw_64/include/QtWidgets/qsizepolicy.h \
 		C:/Qt/6.5.2/mingw_64/include/QtGui/qcursor.h \
 		C:/Qt/6.5.2/mingw_64/include/QtGui/qbitmap.h \
+		../Rick_Morty/heroe.h \
+		C:/Qt/6.5.2/mingw_64/include/QtWidgets/QGraphicsPixmapItem \
 		debug/moc_predefs.h \
 		C:/Qt/6.5.2/mingw_64/bin/moc.exe
 	C:\Qt\6.5.2\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/raulD/OneDrive/Escritorio/Universidad/Semestres/octavo_semestre/Info_II/trabajo_final/build-Rick_Morty-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/Qt/6.5.2/mingw_64/mkspecs/win32-g++ -IC:/Users/raulD/OneDrive/Escritorio/Universidad/Semestres/octavo_semestre/Info_II/trabajo_final/Rick_Morty -IC:/Qt/6.5.2/mingw_64/include -IC:/Qt/6.5.2/mingw_64/include/QtWidgets -IC:/Qt/6.5.2/mingw_64/include/QtGui -IC:/Qt/6.5.2/mingw_64/include/QtCore -I. -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\Rick_Morty\alien.h -o debug\moc_alien.cpp
@@ -693,6 +694,8 @@ debug/moc_enemy1.cpp: ../Rick_Morty/enemy1.h \
 		C:/Qt/6.5.2/mingw_64/include/QtWidgets/qsizepolicy.h \
 		C:/Qt/6.5.2/mingw_64/include/QtGui/qcursor.h \
 		C:/Qt/6.5.2/mingw_64/include/QtGui/qbitmap.h \
+		../Rick_Morty/heroe.h \
+		C:/Qt/6.5.2/mingw_64/include/QtWidgets/QGraphicsPixmapItem \
 		debug/moc_predefs.h \
 		C:/Qt/6.5.2/mingw_64/bin/moc.exe
 	C:\Qt\6.5.2\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/raulD/OneDrive/Escritorio/Universidad/Semestres/octavo_semestre/Info_II/trabajo_final/build-Rick_Morty-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/Qt/6.5.2/mingw_64/mkspecs/win32-g++ -IC:/Users/raulD/OneDrive/Escritorio/Universidad/Semestres/octavo_semestre/Info_II/trabajo_final/Rick_Morty -IC:/Qt/6.5.2/mingw_64/include -IC:/Qt/6.5.2/mingw_64/include/QtWidgets -IC:/Qt/6.5.2/mingw_64/include/QtGui -IC:/Qt/6.5.2/mingw_64/include/QtCore -I. -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\Rick_Morty\enemy1.h -o debug\moc_enemy1.cpp
@@ -870,6 +873,8 @@ debug/moc_escolta.cpp: ../Rick_Morty/escolta.h \
 		C:/Qt/6.5.2/mingw_64/include/QtWidgets/qsizepolicy.h \
 		C:/Qt/6.5.2/mingw_64/include/QtGui/qcursor.h \
 		C:/Qt/6.5.2/mingw_64/include/QtGui/qbitmap.h \
+		../Rick_Morty/heroe.h \
+		C:/Qt/6.5.2/mingw_64/include/QtWidgets/QGraphicsPixmapItem \
 		debug/moc_predefs.h \
 		C:/Qt/6.5.2/mingw_64/bin/moc.exe
 	C:\Qt\6.5.2\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/raulD/OneDrive/Escritorio/Universidad/Semestres/octavo_semestre/Info_II/trabajo_final/build-Rick_Morty-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/Qt/6.5.2/mingw_64/mkspecs/win32-g++ -IC:/Users/raulD/OneDrive/Escritorio/Universidad/Semestres/octavo_semestre/Info_II/trabajo_final/Rick_Morty -IC:/Qt/6.5.2/mingw_64/include -IC:/Qt/6.5.2/mingw_64/include/QtWidgets -IC:/Qt/6.5.2/mingw_64/include/QtGui -IC:/Qt/6.5.2/mingw_64/include/QtCore -I. -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\Rick_Morty\escolta.h -o debug\moc_escolta.cpp
@@ -1243,7 +1248,9 @@ debug/moc_mainwindow.cpp: ../Rick_Morty/mainwindow.h \
 		C:/Qt/6.5.2/mingw_64/include/QtWidgets/QGraphicsItem \
 		C:/Qt/6.5.2/mingw_64/include/QtWidgets/QWidget \
 		../Rick_Morty/balas.h \
+		../Rick_Morty/escolta.h \
 		../Rick_Morty/enemy1.h \
+		../Rick_Morty/alien.h \
 		../Rick_Morty/rick.h \
 		../Rick_Morty/morty.h \
 		../Rick_Morty/obstaculo.h \
@@ -1966,7 +1973,9 @@ debug/moc_start.cpp: ../Rick_Morty/start.h \
 		C:/Qt/6.5.2/mingw_64/include/QtWidgets/QGraphicsItem \
 		C:/Qt/6.5.2/mingw_64/include/QtWidgets/QWidget \
 		../Rick_Morty/balas.h \
+		../Rick_Morty/escolta.h \
 		../Rick_Morty/enemy1.h \
+		../Rick_Morty/alien.h \
 		../Rick_Morty/rick.h \
 		../Rick_Morty/morty.h \
 		../Rick_Morty/obstaculo.h \
@@ -2173,7 +2182,9 @@ debug/alien.o: ../Rick_Morty/alien.cpp ../Rick_Morty/alien.h \
 		C:/Qt/6.5.2/mingw_64/include/QtGui/qpalette.h \
 		C:/Qt/6.5.2/mingw_64/include/QtWidgets/qsizepolicy.h \
 		C:/Qt/6.5.2/mingw_64/include/QtGui/qcursor.h \
-		C:/Qt/6.5.2/mingw_64/include/QtGui/qbitmap.h
+		C:/Qt/6.5.2/mingw_64/include/QtGui/qbitmap.h \
+		../Rick_Morty/heroe.h \
+		C:/Qt/6.5.2/mingw_64/include/QtWidgets/QGraphicsPixmapItem
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\alien.o ..\Rick_Morty\alien.cpp
 
 debug/balas.o: ../Rick_Morty/balas.cpp ../Rick_Morty/balas.h \
@@ -2511,6 +2522,8 @@ debug/enemy1.o: ../Rick_Morty/enemy1.cpp ../Rick_Morty/enemy1.h \
 		C:/Qt/6.5.2/mingw_64/include/QtWidgets/qsizepolicy.h \
 		C:/Qt/6.5.2/mingw_64/include/QtGui/qcursor.h \
 		C:/Qt/6.5.2/mingw_64/include/QtGui/qbitmap.h \
+		../Rick_Morty/heroe.h \
+		C:/Qt/6.5.2/mingw_64/include/QtWidgets/QGraphicsPixmapItem \
 		C:/Qt/6.5.2/mingw_64/include/QtCore/QDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\enemy1.o ..\Rick_Morty\enemy1.cpp
 
@@ -2686,7 +2699,9 @@ debug/escolta.o: ../Rick_Morty/escolta.cpp ../Rick_Morty/escolta.h \
 		C:/Qt/6.5.2/mingw_64/include/QtGui/qpalette.h \
 		C:/Qt/6.5.2/mingw_64/include/QtWidgets/qsizepolicy.h \
 		C:/Qt/6.5.2/mingw_64/include/QtGui/qcursor.h \
-		C:/Qt/6.5.2/mingw_64/include/QtGui/qbitmap.h
+		C:/Qt/6.5.2/mingw_64/include/QtGui/qbitmap.h \
+		../Rick_Morty/heroe.h \
+		C:/Qt/6.5.2/mingw_64/include/QtWidgets/QGraphicsPixmapItem
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\escolta.o ..\Rick_Morty\escolta.cpp
 
 debug/heroe.o: ../Rick_Morty/heroe.cpp ../Rick_Morty/heroe.h \
@@ -3057,7 +3072,9 @@ debug/main.o: ../Rick_Morty/main.cpp ../Rick_Morty/mainwindow.h \
 		C:/Qt/6.5.2/mingw_64/include/QtWidgets/QGraphicsItem \
 		C:/Qt/6.5.2/mingw_64/include/QtWidgets/QWidget \
 		../Rick_Morty/balas.h \
+		../Rick_Morty/escolta.h \
 		../Rick_Morty/enemy1.h \
+		../Rick_Morty/alien.h \
 		../Rick_Morty/rick.h \
 		../Rick_Morty/morty.h \
 		../Rick_Morty/obstaculo.h \
@@ -3278,11 +3295,47 @@ debug/mainwindow.o: ../Rick_Morty/mainwindow.cpp ../Rick_Morty/mainwindow.h \
 		C:/Qt/6.5.2/mingw_64/include/QtWidgets/QGraphicsItem \
 		C:/Qt/6.5.2/mingw_64/include/QtWidgets/QWidget \
 		../Rick_Morty/balas.h \
+		../Rick_Morty/escolta.h \
 		../Rick_Morty/enemy1.h \
+		../Rick_Morty/alien.h \
 		../Rick_Morty/rick.h \
 		../Rick_Morty/morty.h \
 		../Rick_Morty/obstaculo.h \
-		ui_mainwindow.h
+		ui_mainwindow.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/QVariant \
+		C:/Qt/6.5.2/mingw_64/include/QtWidgets/QApplication \
+		C:/Qt/6.5.2/mingw_64/include/QtWidgets/qapplication.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/qcoreapplication.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/qeventloop.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/qcoreapplication_platform.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/qfuture.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/qfutureinterface.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/qmutex.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/qtsan_impl.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/qresultstore.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/qfuture_impl.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/qthreadpool.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/qthread.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/qdeadlinetimer.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/qelapsedtimer.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/qrunnable.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/qexception.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/qpromise.h \
+		C:/Qt/6.5.2/mingw_64/include/QtGui/qguiapplication.h \
+		C:/Qt/6.5.2/mingw_64/include/QtGui/qinputmethod.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/qlocale.h \
+		C:/Qt/6.5.2/mingw_64/include/QtGui/qguiapplication_platform.h \
+		C:/Qt/6.5.2/mingw_64/include/QtWidgets/QLabel \
+		C:/Qt/6.5.2/mingw_64/include/QtWidgets/qlabel.h \
+		C:/Qt/6.5.2/mingw_64/include/QtGui/qpicture.h \
+		C:/Qt/6.5.2/mingw_64/include/QtGui/qtextdocument.h \
+		C:/Qt/6.5.2/mingw_64/include/QtWidgets/QMenuBar \
+		C:/Qt/6.5.2/mingw_64/include/QtWidgets/qmenubar.h \
+		C:/Qt/6.5.2/mingw_64/include/QtWidgets/qmenu.h \
+		C:/Qt/6.5.2/mingw_64/include/QtWidgets/QProgressBar \
+		C:/Qt/6.5.2/mingw_64/include/QtWidgets/qprogressbar.h \
+		C:/Qt/6.5.2/mingw_64/include/QtWidgets/QStatusBar \
+		C:/Qt/6.5.2/mingw_64/include/QtWidgets/qstatusbar.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\mainwindow.o ..\Rick_Morty\mainwindow.cpp
 
 debug/morty.o: ../Rick_Morty/morty.cpp ../Rick_Morty/morty.h \
@@ -3994,11 +4047,44 @@ debug/start.o: ../Rick_Morty/start.cpp ../Rick_Morty/start.h \
 		C:/Qt/6.5.2/mingw_64/include/QtWidgets/QGraphicsItem \
 		C:/Qt/6.5.2/mingw_64/include/QtWidgets/QWidget \
 		../Rick_Morty/balas.h \
+		../Rick_Morty/escolta.h \
 		../Rick_Morty/enemy1.h \
+		../Rick_Morty/alien.h \
 		../Rick_Morty/rick.h \
 		../Rick_Morty/morty.h \
 		../Rick_Morty/obstaculo.h \
-		ui_start.h
+		ui_start.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/QVariant \
+		C:/Qt/6.5.2/mingw_64/include/QtWidgets/QApplication \
+		C:/Qt/6.5.2/mingw_64/include/QtWidgets/qapplication.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/qcoreapplication.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/qeventloop.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/qcoreapplication_platform.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/qfuture.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/qfutureinterface.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/qmutex.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/qtsan_impl.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/qresultstore.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/qfuture_impl.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/qthreadpool.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/qthread.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/qdeadlinetimer.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/qelapsedtimer.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/qrunnable.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/qexception.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/qpromise.h \
+		C:/Qt/6.5.2/mingw_64/include/QtGui/qguiapplication.h \
+		C:/Qt/6.5.2/mingw_64/include/QtGui/qinputmethod.h \
+		C:/Qt/6.5.2/mingw_64/include/QtCore/qlocale.h \
+		C:/Qt/6.5.2/mingw_64/include/QtGui/qguiapplication_platform.h \
+		C:/Qt/6.5.2/mingw_64/include/QtWidgets/QMenuBar \
+		C:/Qt/6.5.2/mingw_64/include/QtWidgets/qmenubar.h \
+		C:/Qt/6.5.2/mingw_64/include/QtWidgets/qmenu.h \
+		C:/Qt/6.5.2/mingw_64/include/QtWidgets/QPushButton \
+		C:/Qt/6.5.2/mingw_64/include/QtWidgets/qpushbutton.h \
+		C:/Qt/6.5.2/mingw_64/include/QtWidgets/qabstractbutton.h \
+		C:/Qt/6.5.2/mingw_64/include/QtWidgets/QStatusBar \
+		C:/Qt/6.5.2/mingw_64/include/QtWidgets/qstatusbar.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\start.o ..\Rick_Morty\start.cpp
 
 debug/qrc_imagenes.o: debug/qrc_imagenes.cpp 

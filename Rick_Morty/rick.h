@@ -4,16 +4,20 @@
 #include <QObject>
 #include "heroe.h"
 
-class rick : public heroe                          //Se hereda de la clase heroe
+/*
+ * clase rick el heroe Rick
+*/
+
+class rick : public heroe
 {
     Q_OBJECT
 private:
 
 
 public:
-    explicit rick(QObject *parent = nullptr);
+    explicit rick(QObject *parent = nullptr); // constructor
 
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget); // metodo que pinta en pantalla la instancia
 
 signals:
 };

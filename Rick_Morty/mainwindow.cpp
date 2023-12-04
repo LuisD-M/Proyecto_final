@@ -58,7 +58,7 @@ MainWindow::MainWindow(QWidget *parent, int dificultad, short selheroe) : QMainW
 
     timerbalas = new QTimer(this);
     connect(timerbalas, SIGNAL(timeout()), this, SLOT(enemyBulletGeneration()));
-    timerbalas->start(500); // dificultad
+    timerbalas->start(dificultad);
 
     enemyTimer = new QTimer(this);
     connect(enemyTimer, SIGNAL(timeout()), this, SLOT(enemyGeneration()));
@@ -591,7 +591,7 @@ void MainWindow::colisionEscena3()
         }
     }
 
-    if(vidas <= -5){
+    if(vidas <= 0){
         eliminaItems(scene3);
         perdiste(scene3);
     }
@@ -721,7 +721,7 @@ void MainWindow::ganaste(QGraphicsScene *scene)
 void MainWindow::cambioEscena()
 {
 
-    if (escena == 1 && puntos >= 1)
+    if (escena == 1 && puntos >= 10)
     {
         escena = 2;
         eliminaItems(scene1);
@@ -743,7 +743,7 @@ void MainWindow::cambioEscena()
         on_progressBar_valueChanged(vidas);
 
 
-    }else if(escena == 2 && puntos >= 1)
+    }else if(escena == 2 && puntos >= 10)
     {
         escena = 3;
         eliminaItems(scene2);
@@ -760,6 +760,7 @@ void MainWindow::cambioEscena()
         personaje->setPos(scene3->sceneRect().width()/2,scene3->sceneRect().height()/2);
         personaje->setLevel3Scale();
 
+        timerbalas->start(dificultad*4);
         vidas = 5;
         on_progressBar_valueChanged(vidas);
 
