@@ -11,6 +11,8 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
@@ -29,6 +31,8 @@ public:
     QPushButton *DifiHard;
     QPushButton *Rick;
     QPushButton *Morty;
+    QLineEdit *Name;
+    QLabel *label;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -66,6 +70,18 @@ public:
         Morty->setObjectName(QString::fromUtf8("Morty"));
         Morty->setGeometry(QRect(370, 370, 141, 31));
         Morty->setFont(font);
+        Name = new QLineEdit(centralwidget);
+        Name->setObjectName(QString::fromUtf8("Name"));
+        Name->setGeometry(QRect(20, 370, 121, 31));
+        QFont font1;
+        font1.setPointSize(12);
+        font1.setBold(true);
+        Name->setFont(font1);
+        label = new QLabel(centralwidget);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setGeometry(QRect(40, 350, 81, 20));
+        label->setFont(font1);
+        label->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);"));
         start->setCentralWidget(centralwidget);
         menubar = new QMenuBar(start);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -92,6 +108,7 @@ public:
         Morty->setAccessibleDescription(QCoreApplication::translate("start", "<html><head/><body><p align=\"center\"><br/></p></body></html>", nullptr));
 #endif // QT_CONFIG(accessibility)
         Morty->setText(QCoreApplication::translate("start", "MORTY", nullptr));
+        label->setText(QCoreApplication::translate("start", "Nombre", nullptr));
     } // retranslateUi
 
 };

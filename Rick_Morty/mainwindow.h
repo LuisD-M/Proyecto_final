@@ -8,6 +8,7 @@
 #include <QList>
 #include <QObject>
 #include <QTimer>
+#include <QDateTime>
 #include <QPixmap>
 #include <QGraphicsPixmapItem>
 #include <QRect>
@@ -23,6 +24,11 @@
 #include <QGraphicsEllipseItem>
 #include <QFont>
 #include <QGraphicsTextItem>
+#include <string>
+#include <iostream>
+#include <QDebug>
+#include <fstream>
+#include <sstream>
 
 #include <heroe.h>
 #include <balas.h>
@@ -32,6 +38,7 @@
 #include <morty.h>
 #include <obstaculo.h>
 
+using namespace std;
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -42,7 +49,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr, int dificultad=0, short selheroe=0);
+    MainWindow(QWidget *parent = nullptr, int dificultad=0, short selheroe=0, string name="");
     ~MainWindow();
 
     void gameover();
@@ -71,6 +78,7 @@ private:
     short escena;
     int dificultad;
     short selheroe;
+    string name;
 
     int vidas;
     int puntos;
@@ -96,6 +104,8 @@ private:
     void keyPressEvent(QKeyEvent* event);
     void keyReleaseEvent(QKeyEvent* event);
     void mousePressEvent(QMouseEvent *event);
+
+    void Resultado(string linea, string resu);
 
 
 private slots:

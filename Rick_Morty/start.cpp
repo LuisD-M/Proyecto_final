@@ -17,7 +17,8 @@ start::~start()
 
 void start::on_pushButton_clicked()
 {
-    gw = new MainWindow(nullptr, dificultad,selheroe);
+    name = ui->Name->text().toStdString();
+    gw = new MainWindow(nullptr, dificultad, selheroe, name);
     gw->show();
     this->hide();
 }
@@ -46,4 +47,7 @@ void start::on_Morty_clicked()
 {
     selheroe = 2;
 }
+
+
+
 

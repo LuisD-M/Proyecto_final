@@ -2,12 +2,13 @@
 #include "ui_mainwindow.h"
 #include <QGraphicsView>
 
-MainWindow::MainWindow(QWidget *parent, int dificultad, short selheroe) : QMainWindow(parent), ui(new Ui::MainWindow)
+MainWindow::MainWindow(QWidget *parent, int dificultad, short selheroe, string name) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
     this->dificultad = dificultad;
     this->selheroe = selheroe;
+    this->name = name;
 
     scene1 = new QGraphicsScene;
     scene2 = new QGraphicsScene;
@@ -279,6 +280,36 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
         default:
             break;
         }
+    }
+}
+
+void MainWindow::Resultado(string linea, string resu)
+{
+    string fechaYHora, lineaT;
+
+    QDateTime currentDateTime = QDateTime::currentDateTime();
+    QString dateTimeString = currentDateTime.toString("yyyy-MM-dd hh:mm:ss");
+
+    fechaYHora = dateTimeString.toStdString();
+
+    lineaT = linea + "," + resu + "," + fechaYHora;
+
+    try{
+
+        ofstream in("Historial.txt",ios::app);
+
+        if (in.is_open()){
+            in<<lineaT<<endl;
+            in.close();
+        }
+        else
+            throw '5';
+    }
+    catch (char c){
+        if(c==5)
+            cout<<"Error con el archivo de escritura"<<endl<<endl;
+        else
+            cout<<"Error inesperado"<<endl<<endl;
     }
 }
 
@@ -708,6 +739,12 @@ void MainWindow::perdiste(QGraphicsScene *scene)
     gameOverText->setDefaultTextColor(Qt::black);
     gameOverText->setPos(scene->width() / 2 - 100, scene->height() / 2 - 50);
     scene->addItem(gameOverText);
+
+    string resu = "Perdio";
+    Resultado(name,resu);
+
+
+
 }
 
 void MainWindow::ganaste(QGraphicsScene *scene)
@@ -722,6 +759,9 @@ void MainWindow::ganaste(QGraphicsScene *scene)
     gameOverText->setDefaultTextColor(Qt::black);
     gameOverText->setPos(scene->width() / 2 - 100, scene->height() / 2 - 50);
     scene->addItem(gameOverText);
+
+    string resu = "Gano";
+    Resultado(name,resu);
 }
 
 void MainWindow::cambioEscena()

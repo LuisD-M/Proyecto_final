@@ -4,7 +4,11 @@
 #include <QMainWindow>
 #include <QGraphicsRectItem>
 #include <QGraphicsView>
+#include <string>
+
 #include "mainwindow.h"
+
+using namespace std;
 
 
 namespace Ui {
@@ -32,12 +36,14 @@ private slots:
 
     void on_Morty_clicked();
 
+
 private:
     Ui::start *ui;            // Variable para la ventana que se muestra primero
     QMainWindow *gw;
 
     int dificultad=10000000;
     short selheroe=0;
+    string name;
 };
 
 #endif // START_H
