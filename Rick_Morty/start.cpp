@@ -25,17 +25,17 @@ void start::on_pushButton_clicked()
 
 void start::on_DifiMedio_clicked()
 {
-    dificultad = 30;
+    dificultad = 50;
 }
 
 void start::on_DifiEasy_clicked()
 {
-    dificultad = 50;
+    dificultad = 100;
 }
 
 void start::on_DifiHard_clicked()
 {
-    dificultad = 10;
+    dificultad = 30;
 }
 
 void start::on_Rick_clicked()

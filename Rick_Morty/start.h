@@ -10,6 +10,10 @@
 
 using namespace std;
 
+/*
+ * clase start es la ventana de inicio donde se escogen las condiciones iniciales del juego
+*/
+
 
 namespace Ui {
 class start;
@@ -20,10 +24,11 @@ class start : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit start(QWidget *parent = nullptr);
-    ~start();
+    explicit start(QWidget *parent = nullptr); // constructor
+    ~start(); // destructor
 
 private slots:
+    // manejan que se hace cuando se presionan los distintos botones de la pantalla
     void on_pushButton_clicked();
 
     void on_DifiMedio_clicked();
@@ -38,12 +43,14 @@ private slots:
 
 
 private:
-    Ui::start *ui;            // Variable para la ventana que se muestra primero
-    QMainWindow *gw;
+    Ui::start *ui; // contiene la ventana
+    QMainWindow *gw; // contiene la siguiente ventana a mostrar
 
-    int dificultad=10000000;
-    short selheroe=0;
-    string name;
+    string name;    //almacena nombre de usuario
+
+    int dificultad=50; // dificultad del juego
+    short selheroe=0; // eleccion del heroe
+
 };
 
 #endif // START_H

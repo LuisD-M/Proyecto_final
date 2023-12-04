@@ -22,6 +22,11 @@ void enemy1::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QW
     setScale(0.31);
 }
 
+QPointF enemy1::getPos() const
+{
+    return mapToScene(0,0);
+}
+
 void enemy1::moveBy(heroe *heroeptr)
 {
     QPointF heroPos = heroeptr->getPos();
@@ -41,8 +46,4 @@ void enemy1::moveBy(heroe *heroeptr)
     setPos(x() + velocidad * cos(angle) , y() + velocidad * sin(angle));
 }
 
-QPointF enemy1::getPos() const
-{
-    return mapToScene(0,0);
-}
 

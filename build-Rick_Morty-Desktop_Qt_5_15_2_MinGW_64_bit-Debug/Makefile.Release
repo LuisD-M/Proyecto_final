@@ -161,7 +161,6 @@ release/qrc_imagenes.cpp: ../Rick_Morty/imagenes.qrc \
 		../Rick_Morty/Imagenes/Rick.png \
 		../Rick_Morty/Imagenes/Fondo2.png \
 		../Rick_Morty/Imagenes/FondoVentana1.png \
-		../Rick_Morty/Imagenes/Bloque1.png \
 		../Rick_Morty/Imagenes/Escolta.png \
 		../Rick_Morty/Imagenes/Fondo1.jpg \
 		../Rick_Morty/Imagenes/Fondo3.png \
@@ -908,6 +907,8 @@ release/moc_mainwindow.cpp: ../Rick_Morty/mainwindow.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/QTimer \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qtimer.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qbasictimer.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QDateTime \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qdatetime.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/QPixmap \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QGraphicsPixmapItem \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qgraphicsitem.h \
@@ -1434,6 +1435,8 @@ release/moc_start.cpp: ../Rick_Morty/start.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/QTimer \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qtimer.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qbasictimer.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QDateTime \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qdatetime.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/QPixmap \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QGraphicsPixmapItem \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/QRect \
@@ -2208,6 +2211,8 @@ release/main.o: ../Rick_Morty/main.cpp ../Rick_Morty/mainwindow.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/QTimer \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qtimer.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qbasictimer.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QDateTime \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qdatetime.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/QPixmap \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QGraphicsPixmapItem \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qgraphicsitem.h \
@@ -2366,6 +2371,8 @@ release/mainwindow.o: ../Rick_Morty/mainwindow.cpp ../Rick_Morty/mainwindow.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/QTimer \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qtimer.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qbasictimer.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QDateTime \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qdatetime.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/QPixmap \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QGraphicsPixmapItem \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qgraphicsitem.h \
@@ -2904,6 +2911,8 @@ release/start.o: ../Rick_Morty/start.cpp ../Rick_Morty/start.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/QTimer \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qtimer.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/qbasictimer.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/QDateTime \
+		C:/Qt/5.15.2/mingw81_64/include/QtCore/qdatetime.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/QPixmap \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QGraphicsPixmapItem \
 		C:/Qt/5.15.2/mingw81_64/include/QtCore/QRect \
@@ -2935,6 +2944,12 @@ release/start.o: ../Rick_Morty/start.cpp ../Rick_Morty/start.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qdesktopwidget.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qguiapplication.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtGui/qinputmethod.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLabel \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlabel.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QLineEdit \
+		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qlineedit.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextcursor.h \
+		C:/Qt/5.15.2/mingw81_64/include/QtGui/qtextformat.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/QMenuBar \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qmenubar.h \
 		C:/Qt/5.15.2/mingw81_64/include/QtWidgets/qmenu.h \
