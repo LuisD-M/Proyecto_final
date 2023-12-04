@@ -8,7 +8,6 @@ start::start(QWidget *parent) :QMainWindow(parent), ui(new Ui::start)
 
     setStyleSheet("start {background-image:url(:/Imagenes/FondoVentana1.png)}");
 
-
 }
 
 start::~start()

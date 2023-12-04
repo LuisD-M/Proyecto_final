@@ -19,3 +19,4 @@ signals:
 };
 
 #endif // HEROE2_H
+

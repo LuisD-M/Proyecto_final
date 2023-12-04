@@ -80,6 +80,31 @@ MainWindow::MainWindow(QWidget *parent, int dificultad, short selheroe) : QMainW
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete personaje;
+    delete scene1;
+    delete scene2;
+    delete scene3;
+    delete timer;
+    delete enemyTimer;
+    delete timerbalas;
+    delete timerObstaculos;
+    delete timerPuntajeNivel3;
+    delete personaje;
+
+    for(auto bala : allyBullets )
+        delete bala;
+
+    for(auto enemy : enemyBullets )
+        delete enemy;
+
+    for(auto enemie : enemies )
+        delete enemie;
+
+    for(auto obsta : obstacles )
+        delete obsta;
+
+    for(int i=0; i<3; i++)
+        delete scenes[i];
 }
 
 void MainWindow::movimientoPersonajeEscena1y2()
