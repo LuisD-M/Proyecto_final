@@ -18,6 +18,7 @@ start::~start()
 void start::on_pushButton_clicked()
 {
     name = ui->Name->text().toStdString();
+    if (name == "") name = "anonymous";
     gw = new MainWindow(nullptr, dificultad, selheroe, name);
     gw->show();
     this->hide();
