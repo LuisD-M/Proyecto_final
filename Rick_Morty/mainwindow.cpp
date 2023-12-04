@@ -736,9 +736,6 @@ void MainWindow::perdiste(QGraphicsScene *scene)
 
     string resu = "Perdio";
     Resultado(name,resu);
-
-
-
 }
 
 void MainWindow::ganaste(QGraphicsScene *scene)
