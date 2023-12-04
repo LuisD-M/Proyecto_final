@@ -404,12 +404,6 @@ void MainWindow::enemyGeneration()
     case 2:
     {
         generacionEnemigosEscena1y2(1);
-
-       /* for (auto enemy : enemies)
-        {
-            enemy->moveBy(personaje);
-        } */
-
     }
     case 3:
     {
@@ -572,7 +566,7 @@ void MainWindow::colisionEscena3()
         }
     }
 
-    if(vidas <= 0){
+    if(vidas <= -5){
         eliminaItems(scene3);
         perdiste(scene3);
     }
@@ -702,7 +696,7 @@ void MainWindow::ganaste(QGraphicsScene *scene)
 void MainWindow::cambioEscena()
 {
 
-    if (escena == 1 && puntos >= 3)
+    if (escena == 1 && puntos >= 1)
     {
         escena = 2;
         eliminaItems(scene1);
@@ -724,7 +718,7 @@ void MainWindow::cambioEscena()
         on_progressBar_valueChanged(vidas);
 
 
-    }else if(escena == 2 && puntos >= 3)
+    }else if(escena == 2 && puntos >= 1)
     {
         escena = 3;
         eliminaItems(scene2);
@@ -738,6 +732,7 @@ void MainWindow::cambioEscena()
         personaje->setRotation(0);
 
         scene3->addItem(personaje);
+        personaje->setPos(scene3->sceneRect().width()/2,scene3->sceneRect().height()/2);
         personaje->setLevel3Scale();
 
         vidas = 5;
